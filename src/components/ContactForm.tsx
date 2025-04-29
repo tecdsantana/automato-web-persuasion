@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-
 const ContactForm = () => {
-  return (
-    <section id="contato" className="section-padding">
+  return <section id="contato" className="section-padding">
       <div className="container mx-auto container-padding">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -17,7 +14,7 @@ const ContactForm = () => {
             <div className="space-y-6">
               <div className="flex items-start">
                 <div className="h-10 w-10 rounded-full bg-automato-blue/10 flex items-center justify-center mr-4 shrink-0">
-                  <div className="h-5 w-5 rounded-full bg-automato-blue"></div>
+                  <div className="h-5 w-5 rounded-full bg-emerald-500"></div>
                 </div>
                 <div>
                   <h3 className="font-bold mb-1">Análise Gratuita</h3>
@@ -28,7 +25,7 @@ const ContactForm = () => {
               </div>
               <div className="flex items-start">
                 <div className="h-10 w-10 rounded-full bg-automato-purple/10 flex items-center justify-center mr-4 shrink-0">
-                  <div className="h-5 w-5 rounded-full bg-automato-purple"></div>
+                  <div className="h-5 w-5 rounded-full bg-emerald-600"></div>
                 </div>
                 <div>
                   <h3 className="font-bold mb-1">Soluções Personalizadas</h3>
@@ -39,7 +36,7 @@ const ContactForm = () => {
               </div>
               <div className="flex items-start">
                 <div className="h-10 w-10 rounded-full bg-automato-blue/10 flex items-center justify-center mr-4 shrink-0">
-                  <div className="h-5 w-5 rounded-full bg-automato-blue"></div>
+                  <div className="h-5 w-5 rounded-full bg-green-600"></div>
                 </div>
                 <div>
                   <h3 className="font-bold mb-1">Suporte Contínuo</h3>
@@ -88,8 +85,6 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactForm;
