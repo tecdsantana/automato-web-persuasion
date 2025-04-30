@@ -34,12 +34,12 @@ const Testimonials = () => {
   ];
 
   return (
-    <section id="depoimentos" className="section-padding bg-gray-50">
+    <section id="depoimentos" className="section-padding bg-automato-black">
       <div className="container mx-auto container-padding">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">O Que Nossos Clientes Dizem</h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-automato-blue to-automato-purple mx-auto mb-6"></div>
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">O Que Nossos Clientes Dizem</h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-automato-blue to-automato-gold mx-auto mb-6"></div>
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">
             Veja como nossas soluções de automação com IA têm transformado empresas de diferentes setores.
           </p>
         </div>
@@ -48,23 +48,23 @@ const Testimonials = () => {
           {testimonials.map((testimonial) => (
             <div 
               key={testimonial.id} 
-              className="bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-gray-100"
+              className="bg-automato-dark-blue/50 p-6 md:p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow border border-automato-gold/20 futuristic-card"
             >
               <div className="flex items-center mb-4">
                 {[...Array(testimonial.stars)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                  <Star key={i} className="h-5 w-5 fill-automato-gold text-automato-gold" />
                 ))}
               </div>
-              <p className="text-gray-600 mb-6 italic">"{testimonial.text}"</p>
+              <p className="text-white/80 mb-6 italic">"{testimonial.text}"</p>
               <div className="flex items-center">
                 <img 
                   src={testimonial.avatar} 
                   alt={testimonial.name} 
-                  className="w-12 h-12 rounded-full mr-4 object-cover"
+                  className="w-12 h-12 rounded-full mr-4 object-cover border border-automato-gold/30"
                 />
                 <div>
-                  <h4 className="font-bold">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-500">{testimonial.position}, {testimonial.company}</p>
+                  <h4 className="font-bold text-white">{testimonial.name}</h4>
+                  <p className="text-sm text-automato-gold">{testimonial.position}, {testimonial.company}</p>
                 </div>
               </div>
             </div>
@@ -72,11 +72,11 @@ const Testimonials = () => {
         </div>
         
         <div className="mt-16 flex flex-wrap justify-center gap-8 md:gap-16">
-          <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-70 hover:opacity-100 transition-opacity" />
-          <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-70 hover:opacity-100 transition-opacity" />
-          <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-70 hover:opacity-100 transition-opacity" />
-          <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-70 hover:opacity-100 transition-opacity" />
-          <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-70 hover:opacity-100 transition-opacity" />
+          <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-50 hover:opacity-80 transition-opacity" />
+          <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-50 hover:opacity-80 transition-opacity" />
+          <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-50 hover:opacity-80 transition-opacity" />
+          <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-50 hover:opacity-80 transition-opacity" />
+          <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-50 hover:opacity-80 transition-opacity" />
         </div>
       </div>
     </section>
