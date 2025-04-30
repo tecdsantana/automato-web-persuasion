@@ -1,23 +1,48 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
+import Logo from './Logo';
 
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrolled]);
+  
   return (
-    <header className="w-full py-4 border-b bg-white bg-opacity-80 backdrop-blur-md fixed top-0 z-50">
+    <header className={`w-full py-4 fixed top-0 z-50 transition-all duration-300 ${
+      scrolled 
+        ? 'bg-automato-black/95 backdrop-blur-md border-b border-automato-gold/20' 
+        : 'bg-transparent'
+    }`}>
       <div className="container mx-auto flex items-center justify-between container-padding">
         <div className="flex items-center">
-          <h1 className="text-2xl font-bold heading-gradient">Automato</h1>
+          <Logo />
         </div>
         
-        <nav className="hidden md:flex space-x-8">
-          <a href="#como-funciona" className="text-gray-600 hover:text-automato-blue transition-colors">Como Funciona</a>
-          <a href="#beneficios" className="text-gray-600 hover:text-automato-blue transition-colors">Benefícios</a>
-          <a href="#depoimentos" className="text-gray-600 hover:text-automato-blue transition-colors">Depoimentos</a>
+        <nav className="hidden md:flex space-x-10">
+          <a href="#como-funciona" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">COMO FUNCIONA</a>
+          <a href="#beneficios" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">BENEFÍCIOS</a>
+          <a href="#depoimentos" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">DEPOIMENTOS</a>
         </nav>
         
         <div>
-          <Button className="button-gradient">Fale Conosco</Button>
+          <Button 
+            className="border border-automato-gold text-automato-gold bg-transparent hover:bg-automato-gold/10 hover:gold-glow transition-all duration-300" 
+          >
+            FALE CONOSCO
+          </Button>
         </div>
       </div>
     </header>
