@@ -19,6 +19,12 @@ const Navbar = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [scrolled]);
+
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contato');
+    contactSection?.scrollIntoView({ behavior: 'smooth' });
+  };
   
   return (
     <header className={`w-full py-4 fixed top-0 z-50 transition-all duration-300 ${
@@ -40,8 +46,9 @@ const Navbar = () => {
         <div>
           <Button 
             className="border border-automato-gold text-automato-gold bg-transparent hover:bg-automato-gold/10 hover:gold-glow transition-all duration-300" 
+            onClick={scrollToContact}
           >
-            FALE CONOSCO
+            AGENDAR DIAGNÓSTICO
           </Button>
         </div>
       </div>
