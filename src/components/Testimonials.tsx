@@ -1,161 +1,162 @@
 
 import React, { useState } from 'react';
-import { Star, Edit2, Plus, Trash2 } from 'lucide-react';
+import { Star, Plus, ChevronDown, ChevronRight } from 'lucide-react';
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow
-} from "@/components/ui/table";
-import { Button } from '@/components/ui/button';
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Testimonials = () => {
-  // Estado inicial da tabela com os dados baseados na imagem
-  const [tableData, setTableData] = useState({
-    headers: ['Área', 'Chatbot IA', 'Automação de Processos'],
-    rows: [
-      {
-        area: 'RH',
-        chatbot: '(Triagem de candidatos, respostas a dúvidas frequentes)',
-        automation: '(Agendamento de entrevistas, onboarding)'
-      },
-      {
-        area: 'Marketing',
-        chatbot: '(Atendimento ao cliente, qualificação de leads)',
-        automation: '(Envio de e-mails personalizados, agendamento de posts)'
-      },
-      {
-        area: 'Vendas',
-        chatbot: '(Suporte ao cliente, recomendação de produtos)',
-        automation: '(Geração de relatórios, follow-up de clientes)'
-      },
-      {
-        area: 'Financeiro',
-        chatbot: '(Respostas a dúvidas sobre pagamentos)',
-        automation: '(Processamento de faturas, conciliação bancária)'
-      },
-      {
-        area: 'Operações',
-        chatbot: '(Suporte técnico básico)',
-        automation: '(Gerenciamento de estoque, programação de produção)'
-      }
-    ],
-    editing: null
-  });
-
-  // Estado para armazenar valores em edição
-  const [editingValue, setEditingValue] = useState('');
-  
-  // Estado para controlar a edição de cabeçalhos
-  const [editingHeader, setEditingHeader] = useState({ isEditing: false, index: -1, value: '' });
-
-  // Função para iniciar a edição de uma célula
-  const startEditing = (rowIndex, column) => {
-    let value;
-    
-    if (column === 'area') {
-      value = tableData.rows[rowIndex].area;
-    } else if (column === 'chatbot') {
-      value = tableData.rows[rowIndex].chatbot;
-    } else if (column === 'automation') {
-      value = tableData.rows[rowIndex].automation;
+  // Implementation opportunities data structure
+  const implementationOpportunities = [
+    {
+      area: "Recursos Humanos (RH)",
+      opportunities: [
+        {
+          name: "Triagem e qualificação inicial de candidatos. Respostas a FAQs de RH",
+          solution: "Chatbot no WhatsApp para coletar informações e responder perguntas frequentes sobre vagas e processos.",
+          benefits: "Redução do tempo de triagem, liberação da equipe de RH para tarefas mais complexas, democratização das informações."
+        },
+        {
+          name: "Agendamento e acompanhamento de entrevistas. Onboarding de novos colaboradores.",
+          solution: "Fluxo de agendamento automatizado via WhatsApp. Envio de informações de onboarding e lembretes.",
+          benefits: "Otimização do processo de agendamento, melhor experiência para o candidato/novo colaborador, redução de faltas."
+        },
+        {
+          name: "Coleta de feedback via formulários (integrados via API). Análise de sentimento em pesquisas de clima ou feedback.",
+          solution: "Identificação rápida de áreas de preocupação (via min). Análise de sentimento de texto utilizando um modelo de IA.",
+          benefits: "Melhor e mais rápida compreensão do engajamento dos colaboradores, base para planos de ação."
+        },
+        {
+          name: "Qualificação de leads e nutrição. Atendimento a dúvidas sobre produtos/serviços.",
+          solution: "Chatbot no WhatsApp para qualificar leads (perguntas chave) e responder dúvidas. Envio de materiais de marketing personalizados.",
+          benefits: "Aumento na qualidade dos leads passados para vendas, agilidade no atendimento, personalização da comunicação."
+        }
+      ]
+    },
+    {
+      area: "Marketing",
+      opportunities: [
+        {
+          name: "Automação de campanhas de marketing e notificações personalizadas.",
+          solution: "Disparo automático de mensagens no WhatsApp com base em comportamento do usuário ou eventos (ex. carrinho abandonado, aniversário).",
+          benefits: "Aumento no engajamento, recuperação de vendas perdidas, fortalecimento do relacionamento com o cliente."
+        },
+        {
+          name: "Agendamento e distribuição de posts em redes sociais.",
+          solution: "Fluxo automatizado para agendar posts em diversas plataformas a partir de um único ponto.",
+          benefits: "Otimização do tempo da equipe de marketing, garantia de consistência na publicação."
+        }
+      ]
+    },
+    {
+      area: "Vendas",
+      opportunities: [
+        {
+          name: "Suporte ao cliente pré-venda. Recomendação de produtos/serviços.",
+          solution: "Chatbot no WhatsApp para ajudar clientes a encontrar o produto certo, responder dúvidas técnicas ou de preço.",
+          benefits: "Melhoria na experiência de compra, aumento na taxa de conversão, redução da carga de trabalho dos vendedores."
+        },
+        {
+          name: "Geração de relatórios de vendas e follow-up de clientes.",
+          solution: "Automação da geração de relatórios de performance em Supabase e envio de notificações de follow-up para vendedores via WhatsApp.",
+          benefits: "Acompanhamento mais eficaz das oportunidades, tomada de decisão baseada em dados, aumento da produtividade da equipe."
+        },
+        {
+          name: "Automação de propostas e contratos.",
+          solution: "Fluxo automatizado para gerar propostas personalizadas com base nos dados do cliente e enviar para aprovação.",
+          benefits: "Agilização do processo de vendas, redução de erros manuais, foco dos vendedores na negociação."
+        }
+      ]
+    },
+    {
+      area: "Financeiro",
+      opportunities: [
+        {
+          name: "Respostas a dúvidas sobre pagamentos, faturas e boletos.",
+          solution: "Chatbot no WhatsApp para fornecer status de pagamento, segunda via de boleto, informações sobre parcelamento.",
+          benefits: "Redução da carga de trabalho do financeiro com atendimento, agilidade para o cliente resolver pendências financeiras."
+        },
+        {
+          name: "Processamento e conciliação bancária. Envio de lembretes de pagamento.",
+          solution: "Automação da importação de extratos, conciliação com lançamentos no Supabase, envio de lembretes de vencimento via WhatsApp.",
+          benefits: "Aumento na eficiência da conciliação, redução de erros, diminuição da inadimplência."
+        },
+        {
+          name: "Análise de risco de crédito inicial.",
+          solution: "Integração com fontes de dados de crédito (via API) e análise automatizada para gerar um score de risco inicial.",
+          benefits: "Agilidade na análise de crédito, redução de riscos, tomada de decisão mais rápida."
+        }
+      ]
+    },
+    {
+      area: "Operações",
+      opportunities: [
+        {
+          name: "Gerenciamento de estoque. Programação básica de produção.",
+          solution: "Notificações automáticas no WhatsApp sobre níveis críticos de estoque. Automação do planejamento de tarefas simples de produção.",
+          benefits: "Otimização do controle de estoque, prevenção de rupturas, melhoria na organização da produção."
+        },
+        {
+          name: "Rastreamento e notificações de entrega.",
+          solution: "Envio automático de atualizações de status de pedidos e rastreamento via WhatsApp.",
+          benefits: "Melhoria na satisfação do cliente, redução de chamados de suporte sobre status de entrega."
+        }
+      ]
+    },
+    {
+      area: "Atendimento ao Cliente / Suporte",
+      opportunities: [
+        {
+          name: "Suporte técnico básico e FAQ operacional.",
+          solution: "Chatbot no WhatsApp para responder a perguntas frequentes de clientes ou colaboradores sobre processos operacionais.",
+          benefits: "Redução da carga de trabalho do suporte, agilidade na resolução de problemas simples."
+        },
+        {
+          name: "Chatbot de suporte avançado com encaminhamento inteligente.",
+          solution: "Chatbot no WhatsApp que entende a intenção do cliente e o encaminha para o departamento ou agente correto.",
+          benefits: "Resolução rápida de problemas, direcionamento correto dos atendimentos, otimização do tempo dos agentes."
+        },
+        {
+          name: "Análise de sentimento em interações de suporte.",
+          solution: "Análise do sentimento das conversas no WhatsApp para identificar clientes insatisfeitos ou problemas recorrentes.",
+          benefits: "Identificação proativa de clientes em risco, insights para melhoria de processos e produtos, monitoramento da qualidade do atendimento."
+        },
+        {
+          name: "Monitoramento e notificações de incidentes.",
+          solution: "Alertas automáticos no WhatsApp quando ocorrem problemas em sistemas, servidores ou aplicações.",
+          benefits: "Redução do tempo de resposta a incidentes, comunicação eficaz com a equipe de TI."
+        }
+      ]
+    },
+    {
+      area: "TI",
+      opportunities: [
+        {
+          name: "Automação de tarefas de rotina (backups, verificações).",
+          solution: "Fluxos automatizados para executar tarefas programadas e notificar sobre o status no WhatsApp.",
+          benefits: "Redução da carga de trabalho manual, garantia de execução das tarefas críticas."
+        }
+      ]
+    },
+    {
+      area: "Jurídico",
+      opportunities: [
+        {
+          name: "Gerenciamento e acompanhamento de contratos.",
+          solution: "Notificações automáticas no WhatsApp sobre prazos de contratos, vencimentos e renovações.",
+          benefits: "Prevenção da perda de prazos importantes, organização do fluxo de trabalho jurídico."
+        },
+        {
+          name: "Análise preliminar de documentos.",
+          solution: "Utilização de modelos de IA para identificar cláusulas chave ou termos específicos em documentos (requer integração com serviços de OCR).",
+          benefits: "Agilização da revisão documental, foco na análise humana dos aspectos críticos."
+        }
+      ]
     }
-    
-    setTableData({
-      ...tableData,
-      editing: { rowIndex, column }
-    });
-    setEditingValue(value);
-  };
-
-  // Função para salvar o valor editado
-  const saveEditedValue = () => {
-    const { rowIndex, column } = tableData.editing;
-    const newRows = [...tableData.rows];
-    
-    if (column === 'area') {
-      newRows[rowIndex] = { ...newRows[rowIndex], area: editingValue };
-    } else if (column === 'chatbot') {
-      newRows[rowIndex] = { ...newRows[rowIndex], chatbot: editingValue };
-    } else if (column === 'automation') {
-      newRows[rowIndex] = { ...newRows[rowIndex], automation: editingValue };
-    }
-    
-    setTableData({
-      ...tableData,
-      rows: newRows,
-      editing: null
-    });
-    setEditingValue('');
-  };
-
-  // Função para adicionar uma nova linha
-  const addNewRow = () => {
-    const newRow = {
-      area: 'Nova Área',
-      chatbot: '(Descreva o uso do chatbot)',
-      automation: '(Descreva a automação)'
-    };
-    
-    setTableData({
-      ...tableData,
-      rows: [...tableData.rows, newRow]
-    });
-  };
-
-  // Função para remover uma linha
-  const removeRow = (index) => {
-    const newRows = [...tableData.rows];
-    newRows.splice(index, 1);
-    
-    setTableData({
-      ...tableData,
-      rows: newRows
-    });
-  };
-
-  // Função para iniciar a edição de um cabeçalho
-  const startEditingHeader = (index) => {
-    if (index > 0) { // Não permitir editar o primeiro cabeçalho (Área)
-      setEditingHeader({
-        isEditing: true,
-        index,
-        value: tableData.headers[index]
-      });
-    }
-  };
-
-  // Função para salvar o cabeçalho editado
-  const saveEditedHeader = () => {
-    const newHeaders = [...tableData.headers];
-    newHeaders[editingHeader.index] = editingHeader.value;
-    
-    setTableData({
-      ...tableData,
-      headers: newHeaders
-    });
-    
-    setEditingHeader({ isEditing: false, index: -1, value: '' });
-  };
-
-  // Função para adicionar nova coluna
-  const addNewColumn = () => {
-    const newHeaderName = `Nova Coluna ${tableData.headers.length - 2}`;
-    const newHeaders = [...tableData.headers, newHeaderName];
-    
-    const newRows = tableData.rows.map(row => ({
-      ...row,
-      [`column${tableData.headers.length}`]: '(Descreva o uso)'
-    }));
-    
-    setTableData({
-      ...tableData,
-      headers: newHeaders,
-      rows: newRows
-    });
-  };
+  ];
 
   const testimonials = [
     {
@@ -233,7 +234,7 @@ const Testimonials = () => {
           <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-50 hover:opacity-80 transition-opacity" />
         </div>
         
-        {/* Tabela de Oportunidades de IA */}
+        {/* Tabela de Oportunidades de IA - Nova versão com accordion */}
         <div className="mt-24">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Oportunidades de Implementação</h2>
@@ -243,196 +244,55 @@ const Testimonials = () => {
             </p>
           </div>
 
-          <div className="overflow-x-auto mb-8">
-            <div className="inline-block min-w-full align-middle">
-              <div className="overflow-hidden border border-automato-gold/30 rounded-xl shadow-md">
-                <Table className="min-w-full">
-                  <TableHeader className="bg-automato-dark-blue">
-                    <TableRow>
-                      {tableData.headers.map((header, index) => (
-                        <TableHead 
-                          key={index} 
-                          className="text-white py-3 px-4 font-medium border-r border-automato-gold/20 last:border-r-0"
-                        >
-                          <div className="flex items-center justify-between">
-                            {(editingHeader.isEditing && editingHeader.index === index) ? (
-                              <input
-                                type="text"
-                                value={editingHeader.value}
-                                onChange={(e) => setEditingHeader({...editingHeader, value: e.target.value})}
-                                onBlur={saveEditedHeader}
-                                onKeyPress={(e) => e.key === 'Enter' && saveEditedHeader()}
-                                className="bg-automato-dark-blue/80 text-white px-2 py-1 w-full border border-automato-gold/30 rounded"
-                                autoFocus
-                              />
-                            ) : (
-                              <>
-                                {header}
-                                {index > 0 && ( // Não mostrar o ícone de edição para o cabeçalho "Área"
-                                  <button 
-                                    onClick={() => startEditingHeader(index)} 
-                                    className="ml-2 text-automato-gold/70 hover:text-automato-gold transition-colors"
-                                  >
-                                    <Edit2 size={14} />
-                                  </button>
-                                )}
-                              </>
-                            )}
-                          </div>
-                        </TableHead>
-                      ))}
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {tableData.rows.map((row, rowIndex) => (
-                      <TableRow 
-                        key={rowIndex}
-                        className="bg-automato-dark-blue/40 border-b border-automato-gold/20 last:border-b-0 hover:bg-automato-dark-blue/60 transition-colors"
-                      >
-                        <TableCell className="py-3 px-4 border-r border-automato-gold/20">
-                          {tableData.editing && tableData.editing.rowIndex === rowIndex && tableData.editing.column === 'area' ? (
-                            <input
-                              type="text"
-                              value={editingValue}
-                              onChange={(e) => setEditingValue(e.target.value)}
-                              onBlur={saveEditedValue}
-                              onKeyPress={(e) => e.key === 'Enter' && saveEditedValue()}
-                              className="bg-automato-dark-blue/80 text-white px-2 py-1 w-full border border-automato-gold/30 rounded"
-                              autoFocus
-                            />
-                          ) : (
-                            <div className="flex items-center justify-between">
-                              <span className="text-white font-medium">{row.area}</span>
-                              <button 
-                                onClick={() => startEditing(rowIndex, 'area')} 
-                                className="ml-2 text-automato-gold/70 hover:text-automato-gold transition-colors"
-                              >
-                                <Edit2 size={14} />
-                              </button>
-                            </div>
-                          )}
-                        </TableCell>
-                        <TableCell className="py-3 px-4 border-r border-automato-gold/20">
-                          {tableData.editing && tableData.editing.rowIndex === rowIndex && tableData.editing.column === 'chatbot' ? (
-                            <input
-                              type="text"
-                              value={editingValue}
-                              onChange={(e) => setEditingValue(e.target.value)}
-                              onBlur={saveEditedValue}
-                              onKeyPress={(e) => e.key === 'Enter' && saveEditedValue()}
-                              className="bg-automato-dark-blue/80 text-white px-2 py-1 w-full border border-automato-gold/30 rounded"
-                              autoFocus
-                            />
-                          ) : (
-                            <div className="flex items-start">
-                              <span className="text-automato-gold mr-2">✓</span>
-                              <div className="flex flex-1 justify-between">
-                                <span className="text-white/80">{row.chatbot}</span>
-                                <button 
-                                  onClick={() => startEditing(rowIndex, 'chatbot')} 
-                                  className="ml-2 text-automato-gold/70 hover:text-automato-gold transition-colors"
-                                >
-                                  <Edit2 size={14} />
-                                </button>
-                              </div>
-                            </div>
-                          )}
-                        </TableCell>
-                        <TableCell className="py-3 px-4 border-r border-automato-gold/20 last:border-r-0">
-                          {tableData.editing && tableData.editing.rowIndex === rowIndex && tableData.editing.column === 'automation' ? (
-                            <input
-                              type="text"
-                              value={editingValue}
-                              onChange={(e) => setEditingValue(e.target.value)}
-                              onBlur={saveEditedValue}
-                              onKeyPress={(e) => e.key === 'Enter' && saveEditedValue()}
-                              className="bg-automato-dark-blue/80 text-white px-2 py-1 w-full border border-automato-gold/30 rounded"
-                              autoFocus
-                            />
-                          ) : (
-                            <div className="flex items-start">
-                              <span className="text-automato-gold mr-2">✓</span>
-                              <div className="flex flex-1 justify-between">
-                                <span className="text-white/80">{row.automation}</span>
-                                <button 
-                                  onClick={() => startEditing(rowIndex, 'automation')} 
-                                  className="ml-2 text-automato-gold/70 hover:text-automato-gold transition-colors"
-                                >
-                                  <Edit2 size={14} />
-                                </button>
-                              </div>
-                            </div>
-                          )}
-                        </TableCell>
-                        {/* Renderizar colunas adicionais dinâmicamente */}
-                        {Object.keys(row).filter(key => !['area', 'chatbot', 'automation'].includes(key)).map((key, i) => (
-                          <TableCell key={i} className="py-3 px-4 border-r border-automato-gold/20 last:border-r-0">
-                            {tableData.editing && tableData.editing.rowIndex === rowIndex && tableData.editing.column === key ? (
-                              <input
-                                type="text"
-                                value={editingValue}
-                                onChange={(e) => setEditingValue(e.target.value)}
-                                onBlur={saveEditedValue}
-                                onKeyPress={(e) => e.key === 'Enter' && saveEditedValue()}
-                                className="bg-automato-dark-blue/80 text-white px-2 py-1 w-full border border-automato-gold/30 rounded"
-                                autoFocus
-                              />
-                            ) : (
-                              <div className="flex items-start">
-                                <span className="text-automato-gold mr-2">✓</span>
-                                <div className="flex flex-1 justify-between">
-                                  <span className="text-white/80">{row[key]}</span>
-                                  <button 
-                                    onClick={() => startEditing(rowIndex, key)} 
-                                    className="ml-2 text-automato-gold/70 hover:text-automato-gold transition-colors"
-                                  >
-                                    <Edit2 size={14} />
-                                  </button>
-                                </div>
-                              </div>
-                            )}
-                          </TableCell>
-                        ))}
-                        {/* Adicionar botão para remover a linha */}
-                        <TableCell className="py-3 px-2 w-12">
-                          <button 
-                            onClick={() => removeRow(rowIndex)}
-                            className="text-automato-gold/70 hover:text-automato-gold transition-colors"
-                            title="Remover linha"
-                          >
-                            <Trash2 size={14} />
-                          </button>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
-              </div>
-            </div>
+          <div className="max-w-4xl mx-auto">
+            <Accordion type="single" collapsible className="w-full">
+              {implementationOpportunities.map((area, index) => (
+                <AccordionItem 
+                  key={index} 
+                  value={`item-${index}`}
+                  className="mb-4 bg-automato-dark-blue/50 rounded-lg border border-automato-gold/20 overflow-hidden"
+                >
+                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-automato-dark-blue/70 transition-colors">
+                    <span className="text-xl font-medium text-automato-gold">{area.area}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-4">
+                    <div className="overflow-x-auto">
+                      <table className="w-full min-w-[800px] border-collapse">
+                        <thead>
+                          <tr className="border-b border-automato-gold/20">
+                            <th className="py-3 text-left text-sm font-medium text-automato-gold/90 w-1/3">
+                              Oportunidade de IA / Automação Inteligente
+                            </th>
+                            <th className="py-3 text-left text-sm font-medium text-automato-gold/90 w-1/3">
+                              Solução Proposta com IA / Automação
+                            </th>
+                            <th className="py-3 text-left text-sm font-medium text-automato-gold/90 w-1/3">
+                              Benefícios e Resultados
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {area.opportunities.map((opp, oppIndex) => (
+                            <tr 
+                              key={oppIndex} 
+                              className="border-b border-automato-gold/10 last:border-0 hover:bg-automato-dark-blue/40 transition-colors"
+                            >
+                              <td className="py-4 align-top text-sm text-white/80">{opp.name}</td>
+                              <td className="py-4 align-top text-sm text-white/80">{opp.solution}</td>
+                              <td className="py-4 align-top text-sm text-white/80">{opp.benefits}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
-          
-          {/* Botões para adicionar linha/coluna */}
-          <div className="flex flex-wrap justify-center gap-4 mt-6">
-            <Button 
-              onClick={addNewRow}
-              className="button-gradient flex items-center gap-2"
-              size="sm"
-            >
-              <Plus size={16} />
-              <span>Adicionar Linha</span>
-            </Button>
-            <Button 
-              onClick={addNewColumn}
-              className="button-gradient flex items-center gap-2"
-              size="sm"
-            >
-              <Plus size={16} />
-              <span>Adicionar Coluna</span>
-            </Button>
-          </div>
-          
+
           <div className="text-center mt-12 text-white/60 text-sm">
-            <p>Esta tabela é editável. Clique nos botões de edição para modificar o conteúdo, e use os botões abaixo para adicionar linhas ou colunas.</p>
+            <p>Clique em cada área para expandir e ver as oportunidades de implementação.</p>
           </div>
         </div>
       </div>
