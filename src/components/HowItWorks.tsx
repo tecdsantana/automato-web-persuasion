@@ -6,7 +6,7 @@ const HowItWorks = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Como Funciona</h2>
           <div className="h-1 w-24 bg-gradient-to-r from-automato-blue to-automato-gold mx-auto mb-6"></div>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto">Potencialize sua produtividade e transforme seus processos com soluções de automação inteligente sob medida para o seu negócio.</p>
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">A IA otimiza seus gastos, permitindo que sua equipe foque no que realmente importa: as pessoas.</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
