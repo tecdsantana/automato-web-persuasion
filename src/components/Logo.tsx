@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Circuit } from "lucide-react";
+import { CircuitBoard } from "lucide-react";
 
 const Logo = () => {
   return (
@@ -21,7 +21,7 @@ const Logo = () => {
         
         {/* Circuit pattern overlay */}
         <div className="absolute inset-0 flex items-center justify-center opacity-70">
-          <Circuit size={14} className="text-automato-gold" />
+          <CircuitBoard size={14} className="text-automato-gold" />
         </div>
         
         {/* Glowing center point */}
