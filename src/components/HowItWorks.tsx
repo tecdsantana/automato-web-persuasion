@@ -1,17 +1,12 @@
-
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
-
 const HowItWorks = () => {
-  return (
-    <section id="como-funciona" className="section-padding bg-automato-black">
+  return <section id="como-funciona" className="section-padding bg-automato-black">
       <div className="container mx-auto container-padding">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Como Funciona</h2>
           <div className="h-1 w-24 bg-gradient-to-r from-automato-blue to-automato-gold mx-auto mb-6"></div>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto">
-            Nossa metodologia garantida para transformar seus processos com inteligência artificial e automação de ponta a ponta.
-          </p>
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">Potencialize sua produtividade e transforme seus processos com soluções de automação inteligente sob medida para o seu negócio.</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -91,8 +86,6 @@ const HowItWorks = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HowItWorks;
