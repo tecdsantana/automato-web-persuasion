@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
 const HowItWorks = () => {
@@ -84,6 +85,15 @@ const HowItWorks = () => {
               </li>
             </ul>
           </div>
+        </div>
+      </div>
+
+      {/* Adicionando a seção de Soluções (Oportunidades de Implementação) */}
+      <div id="solucoes" className="container mx-auto container-padding mt-20">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Oportunidades de Implementação</h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-automato-blue to-automato-gold mx-auto mb-6"></div>
+          <p className="text-lg text-white/70 max-w-2xl mx-auto">Descubra como nossos agentes de IA podem transformar diferentes áreas do seu negócio.</p>
         </div>
       </div>
     </section>;

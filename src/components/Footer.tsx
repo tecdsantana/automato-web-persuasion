@@ -42,11 +42,10 @@ const Footer = () => {
             <h4 className="text-lg font-normal text-automato-gold mb-4 tracking-wider">SOLUÇÕES</h4>
             <div className="gold-line mb-6 w-16"></div>
             <ul className="space-y-3">
-              <li><a href="#" className="text-white/60 hover:text-automato-gold transition-colors">Atendimento ao Cliente</a></li>
-              <li><a href="#" className="text-white/60 hover:text-automato-gold transition-colors">Automação de Vendas</a></li>
-              <li><a href="#" className="text-white/60 hover:text-automato-gold transition-colors">Gestão de Documentos</a></li>
-              <li><a href="#" className="text-white/60 hover:text-automato-gold transition-colors">Análise de Dados</a></li>
-              <li><a href="#" className="text-white/60 hover:text-automato-gold transition-colors">RH e Recrutamento</a></li>
+              <li><a href="#como-funciona" className="text-white/60 hover:text-automato-gold transition-colors">Como Funciona</a></li>
+              <li><a href="#beneficios" className="text-white/60 hover:text-automato-gold transition-colors">Benefícios</a></li>
+              <li><a href="#depoimentos" className="text-white/60 hover:text-automato-gold transition-colors">Depoimentos</a></li>
+              <li><a href="#solucoes" className="text-white/60 hover:text-automato-gold transition-colors">Soluções</a></li>
             </ul>
           </div>
           
