@@ -1,14 +1,19 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+
 const HeroSection = () => {
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
     const contactSection = document.getElementById('contato');
-    contactSection?.scrollIntoView({
-      behavior: 'smooth'
-    });
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
   };
+
   return <section className="pt-32 md:pt-40 pb-24 md:pb-32 relative overflow-hidden bg-futuristic-gradient">
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_rgba(30,58,138,0.15),transparent_70%)] opacity-70"></div>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-automato-blue/5 to-transparent blur-3xl"></div>
@@ -57,4 +62,5 @@ const HeroSection = () => {
       </div>
     </section>;
 };
+
 export default HeroSection;

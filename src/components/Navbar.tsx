@@ -23,7 +23,9 @@ const Navbar = () => {
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
     const contactSection = document.getElementById('contato');
-    contactSection?.scrollIntoView({ behavior: 'smooth' });
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
   
   return (
