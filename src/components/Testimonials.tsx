@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Star, Plus, ChevronDown, ChevronRight } from 'lucide-react';
+import { Star, MessageCircle, ChevronRight } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -13,148 +13,28 @@ const Testimonials = () => {
   const implementationOpportunities = [
     {
       area: "Recursos Humanos (RH)",
-      opportunities: [
-        {
-          name: "Triagem e qualificação inicial de candidatos. Respostas a FAQs de RH",
-          solution: "Chatbot no WhatsApp para coletar informações e responder perguntas frequentes sobre vagas e processos.",
-          benefits: "Redução do tempo de triagem, liberação da equipe de RH para tarefas mais complexas, democratização das informações."
-        },
-        {
-          name: "Agendamento e acompanhamento de entrevistas. Onboarding de novos colaboradores.",
-          solution: "Fluxo de agendamento automatizado via WhatsApp. Envio de informações de onboarding e lembretes.",
-          benefits: "Otimização do processo de agendamento, melhor experiência para o candidato/novo colaborador, redução de faltas."
-        },
-        {
-          name: "Coleta de feedback via formulários (integrados via API). Análise de sentimento em pesquisas de clima ou feedback.",
-          solution: "Identificação rápida de áreas de preocupação (via min). Análise de sentimento de texto utilizando um modelo de IA.",
-          benefits: "Melhor e mais rápida compreensão do engajamento dos colaboradores, base para planos de ação."
-        },
-        {
-          name: "Qualificação de leads e nutrição. Atendimento a dúvidas sobre produtos/serviços.",
-          solution: "Chatbot no WhatsApp para qualificar leads (perguntas chave) e responder dúvidas. Envio de materiais de marketing personalizados.",
-          benefits: "Aumento na qualidade dos leads passados para vendas, agilidade no atendimento, personalização da comunicação."
-        }
-      ]
+      description: "Automatize processos de recrutamento, onboarding e gestão de pessoas",
+      opportunities: ["Triagem e qualificação de candidatos", "Agendamento de entrevistas", "Onboarding de novos colaboradores", "Pesquisas de clima organizacional"]
     },
     {
       area: "Marketing",
-      opportunities: [
-        {
-          name: "Automação de campanhas de marketing e notificações personalizadas.",
-          solution: "Disparo automático de mensagens no WhatsApp com base em comportamento do usuário ou eventos (ex. carrinho abandonado, aniversário).",
-          benefits: "Aumento no engajamento, recuperação de vendas perdidas, fortalecimento do relacionamento com o cliente."
-        },
-        {
-          name: "Agendamento e distribuição de posts em redes sociais.",
-          solution: "Fluxo automatizado para agendar posts em diversas plataformas a partir de um único ponto.",
-          benefits: "Otimização do tempo da equipe de marketing, garantia de consistência na publicação."
-        }
-      ]
+      description: "Aumente o engajamento com comunicações personalizadas",
+      opportunities: ["Qualificação de leads", "Campanhas automatizadas", "Distribuição de conteúdo", "Atendimento a dúvidas sobre produtos"]
     },
     {
       area: "Vendas",
-      opportunities: [
-        {
-          name: "Suporte ao cliente pré-venda. Recomendação de produtos/serviços.",
-          solution: "Chatbot no WhatsApp para ajudar clientes a encontrar o produto certo, responder dúvidas técnicas ou de preço.",
-          benefits: "Melhoria na experiência de compra, aumento na taxa de conversão, redução da carga de trabalho dos vendedores."
-        },
-        {
-          name: "Geração de relatórios de vendas e follow-up de clientes.",
-          solution: "Automação da geração de relatórios de performance em Supabase e envio de notificações de follow-up para vendedores via WhatsApp.",
-          benefits: "Acompanhamento mais eficaz das oportunidades, tomada de decisão baseada em dados, aumento da produtividade da equipe."
-        },
-        {
-          name: "Automação de propostas e contratos.",
-          solution: "Fluxo automatizado para gerar propostas personalizadas com base nos dados do cliente e enviar para aprovação.",
-          benefits: "Agilização do processo de vendas, redução de erros manuais, foco dos vendedores na negociação."
-        }
-      ]
+      description: "Potencialize resultados com atendimento inteligente",
+      opportunities: ["Suporte pré-venda", "Recomendação de produtos", "Geração de propostas", "Follow-up de clientes"]
     },
     {
       area: "Financeiro",
-      opportunities: [
-        {
-          name: "Respostas a dúvidas sobre pagamentos, faturas e boletos.",
-          solution: "Chatbot no WhatsApp para fornecer status de pagamento, segunda via de boleto, informações sobre parcelamento.",
-          benefits: "Redução da carga de trabalho do financeiro com atendimento, agilidade para o cliente resolver pendências financeiras."
-        },
-        {
-          name: "Processamento e conciliação bancária. Envio de lembretes de pagamento.",
-          solution: "Automação da importação de extratos, conciliação com lançamentos no Supabase, envio de lembretes de vencimento via WhatsApp.",
-          benefits: "Aumento na eficiência da conciliação, redução de erros, diminuição da inadimplência."
-        },
-        {
-          name: "Análise de risco de crédito inicial.",
-          solution: "Integração com fontes de dados de crédito (via API) e análise automatizada para gerar um score de risco inicial.",
-          benefits: "Agilidade na análise de crédito, redução de riscos, tomada de decisão mais rápida."
-        }
-      ]
+      description: "Simplifique processos e melhore a experiência do cliente",
+      opportunities: ["Esclarecimento sobre pagamentos", "Envio de boletos", "Lembretes de vencimento", "Análise inicial de crédito"]
     },
     {
-      area: "Operações",
-      opportunities: [
-        {
-          name: "Gerenciamento de estoque. Programação básica de produção.",
-          solution: "Notificações automáticas no WhatsApp sobre níveis críticos de estoque. Automação do planejamento de tarefas simples de produção.",
-          benefits: "Otimização do controle de estoque, prevenção de rupturas, melhoria na organização da produção."
-        },
-        {
-          name: "Rastreamento e notificações de entrega.",
-          solution: "Envio automático de atualizações de status de pedidos e rastreamento via WhatsApp.",
-          benefits: "Melhoria na satisfação do cliente, redução de chamados de suporte sobre status de entrega."
-        }
-      ]
-    },
-    {
-      area: "Atendimento ao Cliente / Suporte",
-      opportunities: [
-        {
-          name: "Suporte técnico básico e FAQ operacional.",
-          solution: "Chatbot no WhatsApp para responder a perguntas frequentes de clientes ou colaboradores sobre processos operacionais.",
-          benefits: "Redução da carga de trabalho do suporte, agilidade na resolução de problemas simples."
-        },
-        {
-          name: "Chatbot de suporte avançado com encaminhamento inteligente.",
-          solution: "Chatbot no WhatsApp que entende a intenção do cliente e o encaminha para o departamento ou agente correto.",
-          benefits: "Resolução rápida de problemas, direcionamento correto dos atendimentos, otimização do tempo dos agentes."
-        },
-        {
-          name: "Análise de sentimento em interações de suporte.",
-          solution: "Análise do sentimento das conversas no WhatsApp para identificar clientes insatisfeitos ou problemas recorrentes.",
-          benefits: "Identificação proativa de clientes em risco, insights para melhoria de processos e produtos, monitoramento da qualidade do atendimento."
-        },
-        {
-          name: "Monitoramento e notificações de incidentes.",
-          solution: "Alertas automáticos no WhatsApp quando ocorrem problemas em sistemas, servidores ou aplicações.",
-          benefits: "Redução do tempo de resposta a incidentes, comunicação eficaz com a equipe de TI."
-        }
-      ]
-    },
-    {
-      area: "TI",
-      opportunities: [
-        {
-          name: "Automação de tarefas de rotina (backups, verificações).",
-          solution: "Fluxos automatizados para executar tarefas programadas e notificar sobre o status no WhatsApp.",
-          benefits: "Redução da carga de trabalho manual, garantia de execução das tarefas críticas."
-        }
-      ]
-    },
-    {
-      area: "Jurídico",
-      opportunities: [
-        {
-          name: "Gerenciamento e acompanhamento de contratos.",
-          solution: "Notificações automáticas no WhatsApp sobre prazos de contratos, vencimentos e renovações.",
-          benefits: "Prevenção da perda de prazos importantes, organização do fluxo de trabalho jurídico."
-        },
-        {
-          name: "Análise preliminar de documentos.",
-          solution: "Utilização de modelos de IA para identificar cláusulas chave ou termos específicos em documentos (requer integração com serviços de OCR).",
-          benefits: "Agilização da revisão documental, foco na análise humana dos aspectos críticos."
-        }
-      ]
+      area: "Atendimento ao Cliente",
+      description: "Ofereça suporte 24/7 com respostas imediatas",
+      opportunities: ["Respostas a perguntas frequentes", "Encaminhamento inteligente", "Suporte técnico básico", "Feedback e satisfação"]
     }
   ];
 
@@ -234,65 +114,123 @@ const Testimonials = () => {
           <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-50 hover:opacity-80 transition-opacity" />
         </div>
         
-        {/* Tabela de Oportunidades de IA - Nova versão com accordion */}
-        <div className="mt-24">
+        {/* Nova seção de Oportunidades de Implementação com layout simplificado e WhatsApp mock */}
+        <div id="solucoes" className="mt-24">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Oportunidades de Implementação</h2>
             <div className="h-1 w-24 bg-gradient-to-r from-automato-blue to-automato-gold mx-auto mb-6"></div>
             <p className="text-lg text-white/70 max-w-3xl mx-auto">
-              Veja como as soluções de IA podem ser implementadas em diferentes áreas da sua empresa.
+              Transforme seu negócio com soluções de IA personalizadas para cada área da sua empresa.
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <Accordion type="single" collapsible className="w-full">
-              {implementationOpportunities.map((area, index) => (
-                <AccordionItem 
-                  key={index} 
-                  value={`item-${index}`}
-                  className="mb-4 bg-automato-dark-blue/50 rounded-lg border border-automato-gold/20 overflow-hidden"
-                >
-                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-automato-dark-blue/70 transition-colors">
-                    <span className="text-xl font-medium text-automato-gold">{area.area}</span>
-                  </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-4">
-                    <div className="overflow-x-auto">
-                      <table className="w-full min-w-[800px] border-collapse">
-                        <thead>
-                          <tr className="border-b border-automato-gold/20">
-                            <th className="py-3 text-left text-sm font-medium text-automato-gold/90 w-1/3">
-                              Oportunidade de IA / Automação Inteligente
-                            </th>
-                            <th className="py-3 text-left text-sm font-medium text-automato-gold/90 w-1/3">
-                              Solução Proposta com IA / Automação
-                            </th>
-                            <th className="py-3 text-left text-sm font-medium text-automato-gold/90 w-1/3">
-                              Benefícios e Resultados
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {area.opportunities.map((opp, oppIndex) => (
-                            <tr 
-                              key={oppIndex} 
-                              className="border-b border-automato-gold/10 last:border-0 hover:bg-automato-dark-blue/40 transition-colors"
-                            >
-                              <td className="py-4 align-top text-sm text-white/80">{opp.name}</td>
-                              <td className="py-4 align-top text-sm text-white/80">{opp.solution}</td>
-                              <td className="py-4 align-top text-sm text-white/80">{opp.benefits}</td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* Lado Esquerdo - Tabela simplificada */}
+            <div className="bg-automato-dark-blue/30 p-6 rounded-xl border border-automato-gold/20">
+              <h3 className="text-2xl font-bold mb-6 text-automato-gold">Diversos setores sendo transformados com IA</h3>
+              
+              <div className="space-y-4">
+                {implementationOpportunities.map((area, index) => (
+                  <div key={index} className="bg-automato-dark-blue/50 p-4 rounded-lg border border-automato-gold/10 hover:border-automato-gold/30 transition-colors">
+                    <div className="flex items-center mb-2">
+                      <div className="h-8 w-8 rounded-full bg-automato-blue/20 flex items-center justify-center mr-3 border border-automato-gold/20">
+                        <ChevronRight className="h-5 w-5 text-automato-gold" />
+                      </div>
+                      <h4 className="text-xl font-medium text-white">{area.area}</h4>
                     </div>
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-
-          <div className="text-center mt-12 text-white/60 text-sm">
-            <p>Clique em cada área para expandir e ver as oportunidades de implementação.</p>
+                    <p className="text-white/70 mb-3 pl-11">{area.description}</p>
+                    <div className="flex flex-wrap gap-2 pl-11">
+                      {area.opportunities.map((opp, i) => (
+                        <span key={i} className="bg-automato-blue/10 text-white/80 text-xs px-3 py-1 rounded-full border border-automato-gold/10">
+                          {opp}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Lado Direito - Imagem de interação com WhatsApp */}
+            <div className="bg-automato-dark-blue/30 p-6 rounded-xl border border-automato-gold/20 relative overflow-hidden">
+              <div className="flex flex-col items-center">
+                <div className="mb-6 text-center">
+                  <h3 className="text-2xl font-bold mb-2 text-automato-gold">Automatize seu Atendimento</h3>
+                  <p className="text-white/70">Veja como é simples automatizar processos via WhatsApp</p>
+                </div>
+                
+                <div className="relative mx-auto">
+                  {/* Frame do celular */}
+                  <div className="w-full max-w-[300px] border-8 border-[#333] rounded-[32px] overflow-hidden shadow-2xl relative">
+                    {/* Barra superior */}
+                    <div className="bg-[#075E54] text-white p-3 flex items-center gap-3">
+                      <MessageCircle className="h-5 w-5 text-white" />
+                      <div>
+                        <p className="font-medium">Automato IA</p>
+                        <p className="text-xs opacity-80">Online</p>
+                      </div>
+                    </div>
+                    
+                    {/* Conteúdo da conversa */}
+                    <div className="bg-[#E5DDD5] bg-opacity-30 p-3 h-[400px] overflow-y-auto space-y-3">
+                      {/* Mensagem do bot */}
+                      <div className="bg-white rounded-lg p-3 max-w-[80%] ml-0 shadow-sm">
+                        <p className="text-sm">Olá! Sou o assistente virtual da Automato. Como posso ajudar hoje?</p>
+                        <p className="text-[10px] text-right text-gray-500">09:30</p>
+                      </div>
+                      
+                      {/* Mensagem do usuário */}
+                      <div className="bg-[#DCF8C6] rounded-lg p-3 max-w-[80%] ml-auto shadow-sm">
+                        <p className="text-sm">Quero saber sobre automatização de atendimento</p>
+                        <p className="text-[10px] text-right text-gray-500">09:31</p>
+                      </div>
+                      
+                      {/* Mensagem do bot */}
+                      <div className="bg-white rounded-lg p-3 max-w-[80%] ml-0 shadow-sm">
+                        <p className="text-sm">Com a Automato, você pode automatizar seu atendimento ao cliente, triagem de leads, agendamentos e muito mais!</p>
+                        <p className="text-[10px] text-right text-gray-500">09:31</p>
+                      </div>
+                      
+                      {/* Mensagem do bot com botões */}
+                      <div className="bg-white rounded-lg p-3 max-w-[80%] ml-0 shadow-sm">
+                        <p className="text-sm mb-2">O que você gostaria de conhecer?</p>
+                        <div className="space-y-2">
+                          <button className="bg-automato-blue text-white text-xs w-full py-1 px-2 rounded">Agendar demonstração</button>
+                          <button className="bg-automato-blue text-white text-xs w-full py-1 px-2 rounded">Solicitar orçamento</button>
+                          <button className="bg-automato-blue text-white text-xs w-full py-1 px-2 rounded">Falar com atendente</button>
+                        </div>
+                        <p className="text-[10px] text-right text-gray-500">09:32</p>
+                      </div>
+                      
+                      {/* Mensagem do usuário */}
+                      <div className="bg-[#DCF8C6] rounded-lg p-3 max-w-[80%] ml-auto shadow-sm">
+                        <p className="text-sm">Quero agendar uma demonstração</p>
+                        <p className="text-[10px] text-right text-gray-500">09:32</p>
+                      </div>
+                      
+                      {/* Mensagem do bot */}
+                      <div className="bg-white rounded-lg p-3 max-w-[80%] ml-0 shadow-sm animate-pulse">
+                        <p className="text-sm">Ótimo! Temos horários disponíveis esta semana. Qual dia seria melhor para você?</p>
+                        <p className="text-[10px] text-right text-gray-500">09:32</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Ícone flutuante de WhatsApp */}
+                  <div className="absolute -right-4 -bottom-4 bg-[#25D366] p-3 rounded-full shadow-lg border-4 border-automato-black">
+                    <MessageCircle className="h-8 w-8 text-white" />
+                  </div>
+                </div>
+                
+                <div className="mt-6 text-center">
+                  <p className="text-white/80 text-sm">Transforme seu atendimento com nossa plataforma de IA</p>
+                  <button className="mt-3 bg-automato-gold/80 hover:bg-automato-gold text-automato-black font-medium px-4 py-2 rounded-lg flex items-center gap-2 mx-auto">
+                    <MessageCircle className="h-5 w-5" />
+                    Começar agora
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
