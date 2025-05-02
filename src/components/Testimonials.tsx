@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Star, MessageCircle, ChevronRight } from 'lucide-react';
+import { Star, ChevronRight } from 'lucide-react';
 import {
   Accordion,
   AccordionContent,
@@ -114,7 +114,7 @@ const Testimonials = () => {
           <img src="https://via.placeholder.com/180x60?text=Logo+Cliente" alt="Logo Cliente" className="h-12 opacity-50 hover:opacity-80 transition-opacity" />
         </div>
         
-        {/* Nova seção de Oportunidades de Implementação com layout simplificado e WhatsApp mock */}
+        {/* Oportunidades de Implementação com layout simplificado */}
         <div id="solucoes" className="mt-24">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Oportunidades de Implementação</h2>
@@ -124,112 +124,28 @@ const Testimonials = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Lado Esquerdo - Tabela simplificada */}
-            <div className="bg-automato-dark-blue/30 p-6 rounded-xl border border-automato-gold/20">
-              <h3 className="text-2xl font-bold mb-6 text-automato-gold">Diversos setores sendo transformados com IA</h3>
-              
-              <div className="space-y-4">
-                {implementationOpportunities.map((area, index) => (
-                  <div key={index} className="bg-automato-dark-blue/50 p-4 rounded-lg border border-automato-gold/10 hover:border-automato-gold/30 transition-colors">
-                    <div className="flex items-center mb-2">
-                      <div className="h-8 w-8 rounded-full bg-automato-blue/20 flex items-center justify-center mr-3 border border-automato-gold/20">
-                        <ChevronRight className="h-5 w-5 text-automato-gold" />
-                      </div>
-                      <h4 className="text-xl font-medium text-white">{area.area}</h4>
-                    </div>
-                    <p className="text-white/70 mb-3 pl-11">{area.description}</p>
-                    <div className="flex flex-wrap gap-2 pl-11">
-                      {area.opportunities.map((opp, i) => (
-                        <span key={i} className="bg-automato-blue/10 text-white/80 text-xs px-3 py-1 rounded-full border border-automato-gold/10">
-                          {opp}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="bg-automato-dark-blue/30 p-6 rounded-xl border border-automato-gold/20 max-w-4xl mx-auto">
+            <h3 className="text-2xl font-bold mb-6 text-automato-gold">Diversos setores sendo transformados com IA</h3>
             
-            {/* Lado Direito - Imagem de interação com WhatsApp */}
-            <div className="bg-automato-dark-blue/30 p-6 rounded-xl border border-automato-gold/20 relative overflow-hidden">
-              <div className="flex flex-col items-center">
-                <div className="mb-6 text-center">
-                  <h3 className="text-2xl font-bold mb-2 text-automato-gold">Automatize seu Atendimento</h3>
-                  <p className="text-white/70">Veja como é simples automatizar processos via WhatsApp</p>
-                </div>
-                
-                <div className="relative mx-auto">
-                  {/* Frame do celular */}
-                  <div className="w-full max-w-[300px] border-8 border-[#333] rounded-[32px] overflow-hidden shadow-2xl relative">
-                    {/* Barra superior */}
-                    <div className="bg-[#075E54] text-white p-3 flex items-center gap-3">
-                      <MessageCircle className="h-5 w-5 text-white" />
-                      <div>
-                        <p className="font-medium">Automato IA</p>
-                        <p className="text-xs opacity-80">Online</p>
-                      </div>
+            <div className="space-y-4">
+              {implementationOpportunities.map((area, index) => (
+                <div key={index} className="bg-automato-dark-blue/50 p-4 rounded-lg border border-automato-gold/10 hover:border-automato-gold/30 transition-colors">
+                  <div className="flex items-center mb-2">
+                    <div className="h-8 w-8 rounded-full bg-automato-blue/20 flex items-center justify-center mr-3 border border-automato-gold/20">
+                      <ChevronRight className="h-5 w-5 text-automato-gold" />
                     </div>
-                    
-                    {/* Conteúdo da conversa */}
-                    <div className="bg-[#E5DDD5] bg-opacity-30 p-3 h-[400px] overflow-y-auto space-y-3">
-                      {/* Mensagem do bot */}
-                      <div className="bg-white rounded-lg p-3 max-w-[80%] ml-0 shadow-sm">
-                        <p className="text-sm">Olá! Sou o assistente virtual da Automato. Como posso ajudar hoje?</p>
-                        <p className="text-[10px] text-right text-gray-500">09:30</p>
-                      </div>
-                      
-                      {/* Mensagem do usuário */}
-                      <div className="bg-[#DCF8C6] rounded-lg p-3 max-w-[80%] ml-auto shadow-sm">
-                        <p className="text-sm">Quero saber sobre automatização de atendimento</p>
-                        <p className="text-[10px] text-right text-gray-500">09:31</p>
-                      </div>
-                      
-                      {/* Mensagem do bot */}
-                      <div className="bg-white rounded-lg p-3 max-w-[80%] ml-0 shadow-sm">
-                        <p className="text-sm">Com a Automato, você pode automatizar seu atendimento ao cliente, triagem de leads, agendamentos e muito mais!</p>
-                        <p className="text-[10px] text-right text-gray-500">09:31</p>
-                      </div>
-                      
-                      {/* Mensagem do bot com botões */}
-                      <div className="bg-white rounded-lg p-3 max-w-[80%] ml-0 shadow-sm">
-                        <p className="text-sm mb-2">O que você gostaria de conhecer?</p>
-                        <div className="space-y-2">
-                          <button className="bg-automato-blue text-white text-xs w-full py-1 px-2 rounded">Agendar demonstração</button>
-                          <button className="bg-automato-blue text-white text-xs w-full py-1 px-2 rounded">Solicitar orçamento</button>
-                          <button className="bg-automato-blue text-white text-xs w-full py-1 px-2 rounded">Falar com atendente</button>
-                        </div>
-                        <p className="text-[10px] text-right text-gray-500">09:32</p>
-                      </div>
-                      
-                      {/* Mensagem do usuário */}
-                      <div className="bg-[#DCF8C6] rounded-lg p-3 max-w-[80%] ml-auto shadow-sm">
-                        <p className="text-sm">Quero agendar uma demonstração</p>
-                        <p className="text-[10px] text-right text-gray-500">09:32</p>
-                      </div>
-                      
-                      {/* Mensagem do bot */}
-                      <div className="bg-white rounded-lg p-3 max-w-[80%] ml-0 shadow-sm animate-pulse">
-                        <p className="text-sm">Ótimo! Temos horários disponíveis esta semana. Qual dia seria melhor para você?</p>
-                        <p className="text-[10px] text-right text-gray-500">09:32</p>
-                      </div>
-                    </div>
+                    <h4 className="text-xl font-medium text-white">{area.area}</h4>
                   </div>
-                  
-                  {/* Ícone flutuante de WhatsApp */}
-                  <div className="absolute -right-4 -bottom-4 bg-[#25D366] p-3 rounded-full shadow-lg border-4 border-automato-black">
-                    <MessageCircle className="h-8 w-8 text-white" />
+                  <p className="text-white/70 mb-3 pl-11">{area.description}</p>
+                  <div className="flex flex-wrap gap-2 pl-11">
+                    {area.opportunities.map((opp, i) => (
+                      <span key={i} className="bg-automato-blue/10 text-white/80 text-xs px-3 py-1 rounded-full border border-automato-gold/10">
+                        {opp}
+                      </span>
+                    ))}
                   </div>
                 </div>
-                
-                <div className="mt-6 text-center">
-                  <p className="text-white/80 text-sm">Transforme seu atendimento com nossa plataforma de IA</p>
-                  <button className="mt-3 bg-automato-gold/80 hover:bg-automato-gold text-automato-black font-medium px-4 py-2 rounded-lg flex items-center gap-2 mx-auto">
-                    <MessageCircle className="h-5 w-5" />
-                    Começar agora
-                  </button>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
