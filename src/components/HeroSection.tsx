@@ -50,15 +50,7 @@ const HeroSection = () => {
           <div className="flex-1 max-w-lg">
             <div className="relative">
               <div className="absolute -inset-1 bg-gradient-to-r from-automato-blue/50 to-automato-gold/30 rounded-lg blur-md opacity-50"></div>
-              <div className="relative bg-automato-dark-blue/50 p-1 rounded-lg futuristic-border">
-                
-                
-                {/* Decorative corner elements */}
-                <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-automato-gold"></div>
-                <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-automato-gold"></div>
-                <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-automato-gold"></div>
-                <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-automato-gold"></div>
-              </div>
+              
             </div>
           </div>
         </div>
