@@ -1,9 +1,18 @@
-
 import React from 'react';
 import { Clock, TrendingUp, Search, Users, Zap, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Benefits = () => {
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contato');
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="beneficios" className="section-padding bg-automato-black">
       <div className="container mx-auto container-padding">
@@ -16,6 +25,7 @@ const Benefits = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {/* Benefit 1-6 cards... keep existing code */}
           {/* Benefit 1 */}
           <div className="p-6 rounded-xl hover:shadow-lg transition-shadow bg-automato-dark-blue/40 border border-automato-gold/20 futuristic-card">
             <div className="h-12 w-12 rounded-lg bg-automato-blue/20 flex items-center justify-center mb-5">
@@ -88,7 +98,11 @@ const Benefits = () => {
           <p className="text-lg mb-8 max-w-2xl mx-auto text-white/80">
             Agende uma consulta gratuita e descubra como nossos agentes de IA podem automatizar seus processos.
           </p>
-          <Button size="lg" className="button-gradient gold-glow">
+          <Button 
+            size="lg" 
+            className="button-gradient gold-glow"
+            onClick={scrollToContact}
+          >
             Agendar Consulta Gratuita
           </Button>
         </div>
