@@ -1,38 +1,41 @@
 
 import React from 'react';
+import { Tree, Branch } from 'lucide-react';
 
 const Logo = () => {
   return (
     <div className="relative flex items-center">
       <div className="mr-2">
         <svg width="24" height="24" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-          {/* Athena's Shield - Circular shield with owl symbol */}
-          <circle cx="100" cy="100" r="85" stroke="#D4AF37" strokeWidth="6" fill="none" />
+          {/* Base do nó (círculo central) */}
+          <circle cx="100" cy="100" r="40" fill="#D4AF37" fillOpacity="0.2" stroke="#D4AF37" strokeWidth="4"/>
           
-          {/* Decorative pattern around shield */}
-          <path d="M100 15A85 85 0 0 1 100 185A85 85 0 0 1 100 15" 
-                stroke="#D4AF37" strokeWidth="6" fill="none" strokeDasharray="15,10" />
+          {/* Conexões do nó - representando as ramificações da decisão */}
+          <line x1="100" y1="40" x2="100" y2="10" stroke="#D4AF37" strokeWidth="4" />
+          <line x1="140" y1="100" x2="170" y2="100" stroke="#D4AF37" strokeWidth="4" />
+          <line x1="100" y1="160" x2="100" y2="190" stroke="#D4AF37" strokeWidth="4" />
+          <line x1="60" y1="100" x2="30" y2="100" stroke="#D4AF37" strokeWidth="4" />
           
-          {/* Owl eyes - representing Athena's wisdom */}
-          <circle cx="70" cy="85" r="15" stroke="#D4AF37" strokeWidth="4" fill="none" />
-          <circle cx="130" cy="85" r="15" stroke="#D4AF37" strokeWidth="4" fill="none" />
+          {/* Nós filhos - menores */}
+          <circle cx="100" cy="10" r="10" fill="#D4AF37" />
+          <circle cx="170" cy="100" r="10" fill="#D4AF37" />
+          <circle cx="100" cy="190" r="10" fill="#D4AF37" />
+          <circle cx="30" cy="100" r="10" fill="#D4AF37" />
           
-          {/* Owl pupils */}
-          <circle cx="70" cy="85" r="5" fill="#D4AF37" />
-          <circle cx="130" cy="85" r="5" fill="#D4AF37" />
+          {/* Conexões diagonais */}
+          <line x1="135" y1="65" x2="160" y2="40" stroke="#D4AF37" strokeWidth="3" />
+          <line x1="135" y1="135" x2="160" y2="160" stroke="#D4AF37" strokeWidth="3" />
+          <line x1="65" y1="135" x2="40" y2="160" stroke="#D4AF37" strokeWidth="3" />
+          <line x1="65" y1="65" x2="40" y2="40" stroke="#D4AF37" strokeWidth="3" />
           
-          {/* Owl beak */}
-          <path d="M90 105 L100 115 L110 105" stroke="#D4AF37" strokeWidth="4" fill="none" />
+          {/* Nós diagonais menores */}
+          <circle cx="160" cy="40" r="8" fill="#D4AF37" />
+          <circle cx="160" cy="160" r="8" fill="#D4AF37" />
+          <circle cx="40" cy="160" r="8" fill="#D4AF37" />
+          <circle cx="40" cy="40" r="8" fill="#D4AF37" />
           
-          {/* Olive branch - symbol of peace and victory */}
-          <path d="M50 130 Q80 110, 100 130 Q120 150, 150 130" 
-                stroke="#D4AF37" strokeWidth="4" fill="none" />
-                
-          {/* Olive leaves */}
-          <path d="M70 125 Q75 115, 80 125" stroke="#D4AF37" strokeWidth="2" />
-          <path d="M90 130 Q95 120, 100 130" stroke="#D4AF37" strokeWidth="2" />
-          <path d="M110 135 Q115 125, 120 135" stroke="#D4AF37" strokeWidth="2" />
-          <path d="M130 130 Q135 120, 140 130" stroke="#D4AF37" strokeWidth="2" />
+          {/* Elemento de dado no núcleo (símbolo de binário) */}
+          <text x="86" y="105" fill="#D4AF37" fontSize="24" fontWeight="bold">10</text>
         </svg>
       </div>
       <span className="text-automato-gold font-light text-xs tracking-widest">ATENAFLOW</span>
