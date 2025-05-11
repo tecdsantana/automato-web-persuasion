@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,6 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import ScheduleCall from './ScheduleCall';
 
 const formSchema = z.object({
   name: z.string().min(3, { message: "Nome deve ter pelo menos 3 caracteres." }),
@@ -120,8 +122,8 @@ const ContactForm = () => {
             </div>
           </div>
           
-          <div>
-            <div className="futuristic-card p-8 gold-glow animate-fade-in">
+          <div className="space-y-12">
+            <div className="futuristic-card p-8 gold-glow animate-fade-in relative">
               <h3 className="text-2xl font-light text-white mb-6 tracking-wider">Agende seu <span className="text-automato-gold">diagnóstico</span></h3>
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
@@ -236,6 +238,12 @@ const ContactForm = () => {
               <div className="absolute top-0 right-0 w-5 h-5 border-t border-r border-automato-gold"></div>
               <div className="absolute bottom-0 left-0 w-5 h-5 border-b border-l border-automato-gold"></div>
               <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-automato-gold"></div>
+            </div>
+            
+            {/* Schedule Call Component */}
+            <div className="animate-fade-in">
+              <h3 className="text-2xl font-light text-white mb-6 tracking-wider">Ou agende uma <span className="text-automato-gold">Discovery Call</span></h3>
+              <ScheduleCall />
             </div>
           </div>
         </div>

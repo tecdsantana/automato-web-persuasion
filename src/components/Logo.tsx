@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Tree, Branch } from 'lucide-react';
 
 const Logo = () => {
   return (
