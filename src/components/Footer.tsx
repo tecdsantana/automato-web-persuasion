@@ -67,7 +67,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <span className="text-automato-gold mr-2">•</span>
-                <span className="text-white/60">contato@automato.com.br</span>
+                <span className="text-white/60">contato@atenaflow.com.br</span>
               </li>
               <li className="flex items-start">
                 <span className="text-automato-gold mr-2">•</span>
@@ -85,7 +85,7 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/40 text-sm">
-            &copy; {new Date().getFullYear()} Automato. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} Atenaflow. Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-white/40 hover:text-automato-gold text-sm">Política de Privacidade</a>

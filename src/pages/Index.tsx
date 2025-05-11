@@ -15,13 +15,13 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Automato | Agentes de IA para Automatizar seu Negócio</title>
+        <title>Atenaflow | Agentes de IA para Automatizar seu Negócio</title>
         <meta name="description" content="Transforme seu negócio com automação inteligente. Agentes de IA personalizados para otimizar processos, reduzir custos e aumentar produtividade." />
         <meta name="keywords" content="automação, inteligência artificial, agentes de IA, processos automatizados, produtividade, transformação digital" />
-        <meta property="og:title" content="Automato | Agentes de IA para Automatizar seu Negócio" />
+        <meta property="og:title" content="Atenaflow | Agentes de IA para Automatizar seu Negócio" />
         <meta property="og:description" content="Transforme seu negócio com automação inteligente. Agentes de IA personalizados para otimizar processos, reduzir custos e aumentar produtividade." />
         <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://automato.com.br" />
+        <link rel="canonical" href="https://atenaflow.com.br" />
       </Helmet>
       <div className="min-h-screen flex flex-col">
         <Navbar />
