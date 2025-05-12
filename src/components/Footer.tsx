@@ -1,9 +1,7 @@
 import React from 'react';
 import Logo from './Logo';
-
 const Footer = () => {
-  return (
-    <footer className="bg-futuristic-gradient text-white py-16">
+  return <footer className="bg-futuristic-gradient text-white py-16">
       <div className="container mx-auto container-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
@@ -66,7 +64,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <span className="text-automato-gold mr-2">•</span>
-                <span className="text-white/60">contato@atenaflow.com.br</span>
+                <span className="text-white/60">contato@flownine.com.br</span>
               </li>
               <li className="flex items-start">
                 <span className="text-automato-gold mr-2">•</span>
@@ -93,8 +91,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
