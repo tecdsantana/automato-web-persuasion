@@ -1,11 +1,8 @@
-
 import React from 'react';
 import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from "@/components/ui/table";
 import { Check, X } from "lucide-react";
-
 const ComparisonTable = () => {
-  return (
-    <section id="comparacao" className="section-padding bg-automato-black">
+  return <section id="comparacao" className="section-padding bg-automato-black">
       <div className="container mx-auto container-padding">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Compare as suas Opções</h2>
@@ -134,7 +131,7 @@ const ComparisonTable = () => {
 
         <div className="mt-12 flex justify-center">
           <div className="max-w-2xl text-center">
-            <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">Por que escolher a Automato?</h3>
+            <h3 className="text-xl md:text-2xl font-bold mb-4 text-white">Por que escolher a FlowNine?</h3>
             <p className="text-white/70">
               Nossa plataforma oferece soluções de automação com agentes de IA de alta performance, 
               implementação rápida e sem complicações, com suporte contínuo da nossa equipe especializada.
@@ -143,8 +140,6 @@ const ComparisonTable = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ComparisonTable;
