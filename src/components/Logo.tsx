@@ -37,7 +37,7 @@ const Logo = () => {
           <text x="86" y="105" fill="#D4AF37" fontSize="24" fontWeight="bold">10</text>
         </svg>
       </div>
-      <span className="text-automato-gold font-light text-xs tracking-widest">ATENAFLOW</span>
+      <span className="text-automato-gold font-light text-xs tracking-widest">FLOWNINE</span>
     </div>
   );
 };

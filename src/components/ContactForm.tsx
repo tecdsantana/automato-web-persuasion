@@ -46,7 +46,7 @@ const ContactForm = () => {
     
     try {
       // Simulating sending email
-      console.log("Sending form data to contato@atenaflow.com.br:", data);
+      console.log("Sending form data to contato@flownine.com.br:", data);
       
       // In a real implementation, you would use a service like EmailJS, Formspree or your backend API
       // Since we can't actually send emails from the frontend, we'll simulate a successful submission

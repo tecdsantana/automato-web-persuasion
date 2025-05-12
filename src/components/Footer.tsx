@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Logo from './Logo';
 
@@ -85,7 +84,7 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/40 text-sm">
-            &copy; {new Date().getFullYear()} Atenaflow. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} FlowNine. Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-white/40 hover:text-automato-gold text-sm">Política de Privacidade</a>
