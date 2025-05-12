@@ -1,8 +1,6 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
 const HeroSection = () => {
   const scrollToContact = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -13,7 +11,6 @@ const HeroSection = () => {
       });
     }
   };
-
   return <section className="pt-32 md:pt-40 pb-24 md:pb-32 relative overflow-hidden bg-futuristic-gradient">
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_rgba(30,58,138,0.15),transparent_70%)] opacity-70"></div>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-automato-blue/5 to-transparent blur-3xl"></div>
@@ -49,7 +46,7 @@ const HeroSection = () => {
                 <div className="w-8 h-8 rounded-full bg-automato-dark-blue border-2 border-automato-gold/30 flex items-center justify-center text-xs text-white">RB</div>
                 <div className="w-8 h-8 rounded-full bg-automato-black border-2 border-automato-gold/30 flex items-center justify-center text-xs text-automato-gold">+</div>
               </div>
-              <p className="ml-4 text-sm text-white/70">+150 empresas já transformaram seus negócios</p>
+              <p className="ml-4 text-sm text-white/70">+50 empresas já transformaram seus negócios</p>
             </div>
           </div>
           <div className="flex-1 max-w-lg">
@@ -62,5 +59,4 @@ const HeroSection = () => {
       </div>
     </section>;
 };
-
 export default HeroSection;
