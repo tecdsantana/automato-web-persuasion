@@ -68,11 +68,11 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <span className="text-automato-gold mr-2">•</span>
-                <span className="text-white/60">(11) 3456-7890</span>
+                <span className="text-white/60">(11) 96125-0113</span>
               </li>
               <li className="flex items-start">
                 <span className="text-automato-gold mr-2">•</span>
-                <span className="text-white/60">Av. Paulista, 1000 - São Paulo, SP</span>
+                <span className="text-white/60">Av. Aruanã, 601 - Barueri, SP</span>
               </li>
             </ul>
           </div>
