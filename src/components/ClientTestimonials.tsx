@@ -59,7 +59,7 @@ const ClientTestimonials = () => {
             <div className="h-1 w-24 bg-gradient-to-r from-automato-blue to-automato-gold mx-auto mb-6"></div>
           </div>
           
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-13 lg:gap-15">
             <div className="flex flex-col items-center">
               <Workflow size={48} className="text-white mb-2" />
               <span className="text-sm text-white/80">N8N</span>
