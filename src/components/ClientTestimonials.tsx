@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Star, Django, Js, Aws, Circle, Make, Zapier, Python } from 'lucide-react';
+import { Star, Code, CloudCog, Database, Terminal, MessageCircle, Chrome, FileCode, Workflow } from 'lucide-react';
 
 const ClientTestimonials = () => {
   const testimonials = [
@@ -80,47 +80,47 @@ const ClientTestimonials = () => {
           
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
             <div className="flex flex-col items-center">
-              <Django size={48} className="text-white mb-2" />
+              <Workflow size={48} className="text-white mb-2" />
               <span className="text-sm text-white/80">N8N</span>
             </div>
             
             <div className="flex flex-col items-center">
-              <Aws size={48} className="text-white mb-2" />
+              <CloudCog size={48} className="text-white mb-2" />
               <span className="text-sm text-white/80">AWS</span>
             </div>
             
             <div className="flex flex-col items-center">
-              <Circle size={48} className="text-white mb-2" />
+              <Database size={48} className="text-white mb-2" />
               <span className="text-sm text-white/80">Supabase</span>
             </div>
             
             <div className="flex flex-col items-center">
-              <Make size={48} className="text-white mb-2" />
+              <Workflow size={48} className="text-white mb-2" />
               <span className="text-sm text-white/80">Make</span>
             </div>
             
             <div className="flex flex-col items-center">
-              <Python size={48} className="text-white mb-2" />
+              <Terminal size={48} className="text-white mb-2" />
               <span className="text-sm text-white/80">Python</span>
             </div>
             
             <div className="flex flex-col items-center">
-              <Circle size={48} className="text-white mb-2" />
+              <MessageCircle size={48} className="text-white mb-2" />
               <span className="text-sm text-white/80">WhatsApp</span>
             </div>
             
             <div className="flex flex-col items-center">
-              <Circle size={48} className="text-white mb-2" />
+              <Chrome size={48} className="text-white mb-2" />
               <span className="text-sm text-white/80">Google</span>
             </div>
             
             <div className="flex flex-col items-center">
-              <Js size={48} className="text-white mb-2" />
+              <Code size={48} className="text-white mb-2" />
               <span className="text-sm text-white/80">JavaScript</span>
             </div>
             
             <div className="flex flex-col items-center">
-              <Zapier size={48} className="text-white mb-2" />
+              <FileCode size={48} className="text-white mb-2" />
               <span className="text-sm text-white/80">Zapier</span>
             </div>
           </div>
