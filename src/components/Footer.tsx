@@ -1,7 +1,6 @@
 import React from 'react';
 import Logo from './Logo';
 import { Linkedin } from 'lucide-react';
-
 const Footer = () => {
   return <footer className="bg-futuristic-gradient text-white py-16">
       <div className="container mx-auto container-padding">
@@ -68,7 +67,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <span className="text-automato-gold mr-2">•</span>
-                <span className="text-white/60">(11) 96125-0113</span>
+                <span className="text-white/60">(11) 98939-9733</span>
               </li>
               <li className="flex items-start">
                 <span className="text-automato-gold mr-2">•</span>
