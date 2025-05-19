@@ -19,7 +19,7 @@ const ComparisonTable = () => {
                 <TableHead className="w-1/5 py-6 text-white/80">
                   <div className="flex flex-col items-center">
                     <div className="mb-2 font-bold text-automato-gold">
-                      <span className="heading-gradient">Automato</span>
+                      <span className="heading-gradient">FlowNine</span>
                     </div>
                     <div className="rounded-full bg-automato-blue/10 p-2 border border-automato-gold/30">
                       <Check className="h-6 w-6 text-automato-gold" />
