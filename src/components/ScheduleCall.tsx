@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { format, addDays, startOfWeek, addWeeks } from 'date-fns';
+import { format, addWeeks } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
@@ -18,14 +17,6 @@ import {
   CardHeader, 
   CardTitle 
 } from "@/components/ui/card";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 const timeSlots = [
   '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
@@ -66,29 +57,52 @@ const ScheduleCall = () => {
     setTimeSlot(undefined);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const resetForm = () => {
+    setDate(undefined);
+    setTimeSlot(undefined);
+    setName('');
+    setEmail('');
+    setPhone('');
+    setIsBookingStep(false);
+    setIsSubmitting(false);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!date || !timeSlot || !name || !email || !phone) {
+      toast({
+        title: "Erro",
+        description: "Por favor, preencha todos os campos obrigatórios.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsSubmitting(true);
     
-    // Simulating API call to book appointment
-    setTimeout(() => {
+    try {
+      // Simulating API call to book appointment
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
       toast({
         title: "Agendamento confirmado!",
-        description: `Sua chamada de diagnóstico está marcada para ${date && format(date, 'dd/MM/yyyy')} às ${timeSlot}.`,
+        description: `Sua chamada de diagnóstico está marcada para ${format(date, 'dd/MM/yyyy')} às ${timeSlot}.`,
       });
       
+      resetForm();
+    } catch (error) {
+      console.error('Erro ao agendar:', error);
+      toast({
+        title: "Erro no agendamento",
+        description: "Ocorreu um erro ao processar seu agendamento. Tente novamente.",
+        variant: "destructive"
+      });
       setIsSubmitting(false);
-      setDate(undefined);
-      setTimeSlot(undefined);
-      setName('');
-      setEmail('');
-      setPhone('');
-      setIsBookingStep(false);
-    }, 1500);
+    }
   };
 
   const isDayDisabled = (day: Date) => {
-    // Disable weekends and past days
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const isWeekend = day.getDay() === 0 || day.getDay() === 6;
@@ -134,7 +148,7 @@ const ScheduleCall = () => {
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="name" className="text-sm text-white/70">Nome</label>
+            <label htmlFor="name" className="block text-sm text-white/70 mb-1">Nome *</label>
             <input 
               id="name" 
               type="text" 
@@ -144,11 +158,12 @@ const ScheduleCall = () => {
               required
               placeholder="Seu nome completo"
               disabled={isSubmitting}
+              autoComplete="name"
             />
           </div>
           
           <div>
-            <label htmlFor="email" className="text-sm text-white/70">Email</label>
+            <label htmlFor="email" className="block text-sm text-white/70 mb-1">Email *</label>
             <input 
               id="email" 
               type="email" 
@@ -158,11 +173,12 @@ const ScheduleCall = () => {
               required
               placeholder="seu@email.com"
               disabled={isSubmitting}
+              autoComplete="email"
             />
           </div>
           
           <div>
-            <label htmlFor="phone" className="text-sm text-white/70">Telefone</label>
+            <label htmlFor="phone" className="block text-sm text-white/70 mb-1">Telefone *</label>
             <input 
               id="phone" 
               type="tel" 
@@ -172,6 +188,7 @@ const ScheduleCall = () => {
               required
               placeholder="(00) 00000-0000"
               disabled={isSubmitting}
+              autoComplete="tel"
             />
           </div>
           
@@ -230,8 +247,9 @@ const ScheduleCall = () => {
             <div className="flex items-center justify-between mb-2">
               <button 
                 onClick={handlePreviousMonth} 
-                className="text-automato-gold hover:text-automato-gold/80"
+                className="text-automato-gold hover:text-automato-gold/80 transition-colors"
                 aria-label="Mês anterior"
+                type="button"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -240,8 +258,9 @@ const ScheduleCall = () => {
               </h3>
               <button 
                 onClick={handleNextMonth} 
-                className="text-automato-gold hover:text-automato-gold/80"
+                className="text-automato-gold hover:text-automato-gold/80 transition-colors"
                 aria-label="Próximo mês"
+                type="button"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -268,7 +287,7 @@ const ScheduleCall = () => {
               <Globe className="w-4 h-4 text-automato-gold" />
               <Popover>
                 <PopoverTrigger asChild>
-                  <Button variant="link" className="text-automato-gold p-0">
+                  <Button variant="link" className="text-automato-gold p-0 h-auto">
                     Horário de Brasília (GMT-3)
                   </Button>
                 </PopoverTrigger>
