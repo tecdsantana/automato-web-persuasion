@@ -91,10 +91,11 @@ const Footer = () => {
                 <span className="text-automato-gold mr-2">•</span>
                 <span className="text-white/60">Av. Aruanã, 601 - Barueri, SP</span>
               </li>
+              <li className="flex items-start">
+                <span className="text-automato-gold mr-2">•</span>
+                <span className="text-white/60">CNPJ 45.217.293/0001-00</span>
+              </li>
             </ul>
-            <div className="mt-6">
-              <p className="text-white/40 text-sm">CNPJ 45.217.293/0001-00</p>
-            </div>
           </div>
         </div>
         
