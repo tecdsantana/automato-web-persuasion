@@ -92,6 +92,9 @@ const Footer = () => {
                 <span className="text-white/60">Av. Aruanã, 601 - Barueri, SP</span>
               </li>
             </ul>
+            <div className="mt-6">
+              <p className="text-white/40 text-sm">CNPJ 45.217.293/0001-00</p>
+            </div>
           </div>
         </div>
         
