@@ -238,6 +238,11 @@ const ContactForm = () => {
               <div className="absolute bottom-0 left-0 w-5 h-5 border-b border-l border-automato-gold"></div>
               <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-automato-gold"></div>
             </div>
+
+            <div className="futuristic-card p-8 gold-glow animate-fade-in relative">
+              <div className="klaviyo-form-SpJXJg"></div>
+            </div>
+
           </div>
         </div>
       </div>
