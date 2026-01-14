@@ -46,7 +46,7 @@ const HeroSection = () => {
                 <div className="w-8 h-8 rounded-full bg-automato-dark-blue border-2 border-automato-gold/30 flex items-center justify-center text-xs text-white">RB</div>
                 <div className="w-8 h-8 rounded-full bg-automato-black border-2 border-automato-gold/30 flex items-center justify-center text-xs text-automato-gold">+</div>
               </div>
-              <p className="ml-4 text-sm text-white/70">+50 empresas já transformaram seus negócios</p>
+              <p className="ml-4 text-sm text-white/70">+20 empresas já transformaram seus negócios</p>
             </div>
           </div>
           <div className="flex-1 max-w-lg">
