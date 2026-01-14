@@ -64,7 +64,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <span className="text-automato-gold mr-2">•</span>
-                <a href="tel:+5511989399733" className="text-white/60 hover:text-automato-gold transition-colors">(11) 98939-9733</a>
+                <a href="tel:+5511989399733" className="text-white/60 hover:text-automato-gold transition-colors">(11) 96125-0113</a>
               </li>
               <li className="flex items-start">
                 <span className="text-automato-gold mr-2">•</span>
