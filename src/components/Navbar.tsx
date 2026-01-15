@@ -27,6 +27,14 @@ const Navbar = () => {
       contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const scrollToCalendarMeeting = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('calendar-meeting');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   
   return (
     <header className={`w-full py-4 fixed top-0 z-50 transition-all duration-300 ${
@@ -44,12 +52,13 @@ const Navbar = () => {
           <a href="#beneficios" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">BENEFÍCIOS</a>
           <a href="#solucoes" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">SOLUÇÕES</a>
           <a href="#depoimentos" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">DEPOIMENTOS</a>
+          <a href="#contato" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">CONTATO</a>
         </nav>
         
         <div>
           <Button 
             className="border border-automato-gold text-automato-gold bg-transparent hover:bg-automato-gold/10 hover:gold-glow transition-all duration-300" 
-            onClick={scrollToContact}
+            onClick={scrollToCalendarMeeting}
           >
             AGENDAR DIAGNÓSTICO
           </Button>
