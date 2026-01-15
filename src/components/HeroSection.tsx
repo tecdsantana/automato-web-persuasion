@@ -11,6 +11,17 @@ const HeroSection = () => {
       });
     }
   };
+
+  const scrollToSolutions = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('solucoes');
+    if (contactSection) {
+      contactSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return <section className="pt-32 md:pt-40 pb-24 md:pb-32 relative overflow-hidden bg-futuristic-gradient">
       <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_rgba(30,58,138,0.15),transparent_70%)] opacity-70"></div>
       <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-bl from-automato-blue/5 to-transparent blur-3xl"></div>
@@ -18,8 +29,6 @@ const HeroSection = () => {
       {/* Decorative elements */}
       <div className="absolute top-1/4 left-10 w-32 h-32 border border-automato-gold/20 rounded-full opacity-20"></div>
       <div className="absolute bottom-1/4 right-10 w-64 h-64 border border-automato-gold/10 rounded-full opacity-10"></div>
-      <div className="absolute top-1/3 right-1/4 w-1 h-20 bg-automato-gold/30"></div>
-      <div className="absolute bottom-1/3 left-1/5 w-20 h-1 bg-automato-gold/30"></div>
       
       <div className="container mx-auto relative z-10 container-padding">
         <div className="flex flex-col lg:flex-row items-center gap-12">
@@ -35,7 +44,7 @@ const HeroSection = () => {
                 AGENDAR DIAGNÓSTICO
                 <ArrowRight className="ml-1 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border border-automato-gold/70 text-automato-gold bg-transparent hover:bg-automato-gold/10 hover:gold-glow transition-all text-base tracking-wide" onClick={scrollToContact}>
+              <Button size="lg" variant="outline" className="border border-automato-gold/70 text-automato-gold bg-transparent hover:bg-automato-gold/10 hover:gold-glow transition-all text-base tracking-wide" onClick={scrollToSolutions}>
                 CONHECER SOLUÇÕES
               </Button>
             </div>
