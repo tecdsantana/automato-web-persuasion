@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>FlowNine | Agentes de IA para Automatizar seu Negócio</title>
+        <title>Flownine | AI First</title>
         <meta name="description" content="Transforme seu negócio com automação inteligente. Agentes de IA personalizados para otimizar processos, reduzir custos e aumentar produtividade." />
         <meta name="keywords" content="automação, inteligência artificial, agentes de IA, processos automatizados, produtividade, transformação digital" />
         <meta property="og:title" content="FlowNine | Agentes de IA para Automatizar seu Negócio" />
