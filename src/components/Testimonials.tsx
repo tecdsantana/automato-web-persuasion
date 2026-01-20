@@ -1,71 +1,94 @@
 
-import React from 'react';
-import { Star, ChevronRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Headphones, BarChart3, Target, FileText, Cog, Sparkles } from 'lucide-react';
 
 const Testimonials = () => {
-  // Implementation opportunities data structure
-  const implementationOpportunities = [
+  const [activeIndustry, setActiveIndustry] = useState<string | null>(null);
+
+  const industries = [
+    "Varejo",
+    "Logística",
+    "Mercado Financeiro",
+    "Consumo",
+    "Educação",
+    "Saúde"
+  ];
+
+  const solutions = [
     {
-      area: "Recursos Humanos (RH)",
-      description: "Automatize processos de recrutamento, onboarding e gestão de pessoas",
-      opportunities: ["Triagem e qualificação de candidatos", "Agendamento de entrevistas", "Onboarding de novos colaboradores", "Pesquisas de clima organizacional"]
+      icon: Headphones,
+      title: "Suporte inteligente ao cliente",
+      description: "Chatbots via IA que atendem 24/7 com alta precisão e integração com CRM."
     },
     {
-      area: "Marketing",
-      description: "Aumente o engajamento com comunicações personalizadas",
-      opportunities: ["Qualificação de leads", "Campanhas automatizadas", "Distribuição de conteúdo", "Atendimento a dúvidas sobre produtos"]
+      icon: BarChart3,
+      title: "Análise preditiva",
+      description: "Modelos que preveem demanda, otimização de estoque, precificação ideal e rotas logísticas ideais."
     },
     {
-      area: "Vendas",
-      description: "Potencialize resultados com atendimento inteligente",
-      opportunities: ["Suporte pré-venda", "Recomendação de produtos", "Geração de propostas", "Follow-up de clientes"]
+      icon: Target,
+      title: "Marketing e segmentação",
+      description: "Clusterização de clientes com foco na criação de campanhas de marketing personalizadas."
     },
     {
-      area: "Financeiro",
-      description: "Simplifique processos e melhore a experiência do cliente",
-      opportunities: ["Esclarecimento sobre pagamentos", "Envio de boletos", "Lembretes de vencimento", "Análise inicial de crédito"]
+      icon: FileText,
+      title: "Análise inteligente de documentos",
+      description: "Uso de IA para rápida revisão e extração de inteligência para tomada de decisão."
     },
     {
-      area: "Atendimento ao Cliente",
-      description: "Ofereça suporte 24/7 com respostas imediatas",
-      opportunities: ["Respostas a perguntas frequentes", "Encaminhamento inteligente", "Suporte técnico básico", "Feedback e satisfação"]
+      icon: Cog,
+      title: "Automação de tarefas",
+      description: "Agentes que executam processos repetitivos, aumentando a eficiência operacional."
+    },
+    {
+      icon: Sparkles,
+      title: "Outras soluções sob medida",
+      description: "Desenvolvemos outros casos de uso de IA conforme a necessidade do seu negócio."
     }
   ];
 
   return (
     <section id="solucoes" className="section-padding bg-automato-black">
       <div className="container mx-auto container-padding">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Oportunidades de Implementação</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Como entregamos valor com IA</h2>
           <div className="h-1 w-24 bg-gradient-to-r from-automato-blue to-automato-gold mx-auto mb-6"></div>
           <p className="text-lg text-white/70 max-w-3xl mx-auto">
-            Transforme seu negócio com soluções de IA personalizadas para cada área da sua empresa.
+            Desenvolvemos soluções inteligentes que já geraram valor em diversas indústrias.
           </p>
         </div>
 
-        <div className="bg-automato-dark-blue/30 p-6 rounded-xl border border-automato-gold/20 max-w-4xl mx-auto">
-          <h3 className="text-2xl font-bold mb-6 text-automato-gold">Diversos setores sendo transformados com IA</h3>
-          
-          <div className="space-y-4">
-            {implementationOpportunities.map((area, index) => (
-              <div key={index} className="bg-automato-dark-blue/50 p-4 rounded-lg border border-automato-gold/10 hover:border-automato-gold/30 transition-colors">
-                <div className="flex items-center mb-2">
-                  <div className="h-8 w-8 rounded-full bg-automato-blue/20 flex items-center justify-center mr-3 border border-automato-gold/20">
-                    <ChevronRight className="h-5 w-5 text-automato-gold" />
-                  </div>
-                  <h4 className="text-xl font-medium text-white">{area.area}</h4>
-                </div>
-                <p className="text-white/70 mb-3 pl-11">{area.description}</p>
-                <div className="flex flex-wrap gap-2 pl-11">
-                  {area.opportunities.map((opp, i) => (
-                    <span key={i} className="bg-automato-blue/10 text-white/80 text-xs px-3 py-1 rounded-full border border-automato-gold/10">
-                      {opp}
-                    </span>
-                  ))}
-                </div>
+        {/* Industry Tags */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {industries.map((industry, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndustry(activeIndustry === industry ? null : industry)}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                activeIndustry === industry
+                  ? 'bg-automato-gold text-automato-black shadow-[0_0_15px_rgba(212,175,55,0.4)]'
+                  : 'bg-automato-gold/20 text-automato-gold border border-automato-gold/30 hover:bg-automato-gold/30'
+              }`}
+            >
+              {industry}
+            </button>
+          ))}
+        </div>
+
+        {/* Solutions Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          {solutions.map((solution, index) => (
+            <div 
+              key={index} 
+              className="bg-automato-dark-blue/30 p-6 rounded-xl border border-automato-gold/10 hover:border-automato-gold/30 transition-all duration-300 hover:shadow-[0_0_20px_rgba(212,175,55,0.1)] group"
+            >
+              <div className="h-12 w-12 rounded-lg bg-automato-gold/10 flex items-center justify-center mb-4 group-hover:bg-automato-gold/20 transition-colors">
+                <solution.icon className="h-6 w-6 text-automato-gold" />
               </div>
-            ))}
-          </div>
+              <h3 className="text-lg font-semibold text-white mb-3">{solution.title}</h3>
+              <p className="text-white/60 text-sm leading-relaxed">{solution.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
