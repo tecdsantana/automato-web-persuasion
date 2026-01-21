@@ -52,6 +52,7 @@ const Navbar = () => {
           <a href="#beneficios" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">BENEFÍCIOS</a>
           <a href="#solucoes" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">SOLUÇÕES</a>
           <a href="#depoimentos" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">DEPOIMENTOS</a>
+          <a href="/blog" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">BLOG</a>
           <a href="#contato" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">CONTATO</a>
         </nav>
         
