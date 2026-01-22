@@ -1,0 +1,171 @@
+{
+  "name": "Flownine - Auto Blog Post",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 24,
+              "triggerAtHour": 8
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Executar Diariamente",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://newsapi.org/v2/top-headlines",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "category",
+              "value": "technology"
+            },
+            {
+              "name": "language",
+              "value": "pt"
+            },
+            {
+              "name": "pageSize",
+              "value": "5"
+            },
+            {
+              "name": "apiKey",
+              "value": "={{$credentials.newsApiKey}}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "fetch-news",
+      "name": "Buscar Notícias",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [450, 300],
+      "notesInFlow": true,
+      "notes": "Configure sua API key do NewsAPI ou substitua por outra fonte de dados"
+    },
+    {
+      "parameters": {
+        "resource": "chat",
+        "model": "gpt-4o-mini",
+        "messages": {
+          "values": [
+            {
+              "content": "Você é um redator especializado em tecnologia e inteligência artificial. Crie um artigo de blog completo em português brasileiro baseado nas notícias fornecidas.\n\nRetorne um JSON válido com exatamente esta estrutura:\n{\n  \"title\": \"Título atrativo do artigo (máx 60 caracteres)\",\n  \"excerpt\": \"Resumo do artigo em 1-2 frases (máx 160 caracteres)\",\n  \"content\": \"Conteúdo completo em Markdown com # para títulos, ## para subtítulos, - para listas, **negrito**, etc.\",\n  \"category\": \"IA\",\n  \"tags\": [\"tag1\", \"tag2\", \"tag3\"],\n  \"cover_image\": \"URL de imagem do Unsplash relacionada ao tema\"\n}\n\nNotícias para basear o artigo:\n{{ $json.articles }}"
+            }
+          ]
+        },
+        "options": {
+          "responseFormat": "json_object"
+        }
+      },
+      "id": "openai-generate",
+      "name": "Gerar Artigo com IA",
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [650, 300],
+      "credentials": {
+        "openAiApi": {
+          "id": "CONFIGURE_OPENAI_CREDENTIALS",
+          "name": "OpenAI API"
+        }
+      },
+      "notesInFlow": true,
+      "notes": "Configure suas credenciais da OpenAI"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://gjgfevzzonppzxftaxgh.supabase.co/functions/v1/create-blog-post",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdqZ2Zldnp6b25wcHp4ZnRheGdoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg5NjMyMzIsImV4cCI6MjA4NDUzOTIzMn0.2mkQizGIpuEY6BWVE7crpXf9Zz6k5t2GqFKmzD3LHF0"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\": {{ $json.message.content.title }},\n  \"excerpt\": {{ $json.message.content.excerpt }},\n  \"content\": {{ $json.message.content.content }},\n  \"category\": {{ $json.message.content.category || \"IA\" }},\n  \"tags\": {{ $json.message.content.tags || [] }},\n  \"cover_image\": {{ $json.message.content.cover_image || null }},\n  \"published\": true\n}",
+        "options": {}
+      },
+      "id": "create-blog-post",
+      "name": "Criar Post no Blog",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [850, 300],
+      "notesInFlow": true,
+      "notes": "Envia o artigo gerado para a Edge Function do Supabase"
+    }
+  ],
+  "connections": {
+    "Executar Diariamente": {
+      "main": [
+        [
+          {
+            "node": "Buscar Notícias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Buscar Notícias": {
+      "main": [
+        [
+          {
+            "node": "Gerar Artigo com IA",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gerar Artigo com IA": {
+      "main": [
+        [
+          {
+            "node": "Criar Post no Blog",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "instanceId": "flownine-blog-automation"
+  },
+  "tags": [
+    {
+      "name": "blog",
+      "createdAt": "2025-01-22T00:00:00.000Z",
+      "updatedAt": "2025-01-22T00:00:00.000Z"
+    },
+    {
+      "name": "automação",
+      "createdAt": "2025-01-22T00:00:00.000Z",
+      "updatedAt": "2025-01-22T00:00:00.000Z"
+    }
+  ]
+}
