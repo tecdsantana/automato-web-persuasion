@@ -1,0 +1,9 @@
+{
+  "title": "Título do Artigo",
+  "excerpt": "Resumo breve do artigo em 1-2 frases que aparece na listagem do blog.",
+  "content": "# Título Principal\n\nConteúdo do artigo em **Markdown**.\n\n## Subtítulo\n\n- Item 1\n- Item 2\n- Item 3\n\n### Exemplo de código\n\n```javascript\nconst exemplo = 'código';\n```\n\n> Citação importante\n\nTexto final do artigo.",
+  "category": "IA",
+  "tags": ["automação", "inteligência artificial", "produtividade"],
+  "cover_image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1200",
+  "published": true
+}
