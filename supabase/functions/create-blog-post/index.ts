@@ -40,12 +40,21 @@ Deno.serve(async (req) => {
     const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const webhookSecret = Deno.env.get("BLOG_WEBHOOK_SECRET");
 
+    // Validate webhook secret - REQUIRED for security
+    if (!webhookSecret) {
+      console.error("BLOG_WEBHOOK_SECRET not configured");
+      return new Response(
+        JSON.stringify({ error: "Server configuration error" }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     // Parse request body
     const payload: BlogPostPayload = await req.json();
 
-    // Validate webhook secret if configured
-    if (webhookSecret && payload.webhook_secret !== webhookSecret) {
-      console.error("Invalid webhook secret");
+    // Authenticate request with webhook secret
+    if (!payload.webhook_secret || payload.webhook_secret !== webhookSecret) {
+      console.error("Invalid or missing webhook secret in payload");
       return new Response(
         JSON.stringify({ error: "Unauthorized" }),
         { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
