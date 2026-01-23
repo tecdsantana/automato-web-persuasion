@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import { Calendar, Clock, ArrowLeft, Share2, Linkedin, Twitter } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
+import ReactMarkdown from 'react-markdown';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BtnWhatsappFloat from '@/components/BtnWhatsappFloat';
@@ -73,53 +74,47 @@ const BlogPost = () => {
     }
   };
 
-  // Simple markdown to HTML renderer
-  const renderMarkdown = (content: string) => {
-    return content
-      .split('\n')
-      .map((line, index) => {
-        // Headers
-        if (line.startsWith('### ')) {
-          return <h3 key={index} className="text-xl font-semibold text-white mt-8 mb-4">{line.slice(4)}</h3>;
-        }
-        if (line.startsWith('## ')) {
-          return <h2 key={index} className="text-2xl font-bold text-white mt-10 mb-4">{line.slice(3)}</h2>;
-        }
-        if (line.startsWith('# ')) {
-          return <h1 key={index} className="text-3xl font-bold text-white mt-12 mb-6">{line.slice(2)}</h1>;
-        }
-        
-        // Bold and italic
-        let processedLine = line
-          .replace(/\*\*(.+?)\*\*/g, '<strong class="text-white font-semibold">$1</strong>')
-          .replace(/\*(.+?)\*/g, '<em>$1</em>')
-          .replace(/`(.+?)`/g, '<code class="bg-automato-gold/20 text-automato-gold px-1.5 py-0.5 rounded text-sm">$1</code>');
-        
-        // List items
-        if (line.startsWith('- ')) {
-          return (
-            <li 
-              key={index} 
-              className="text-white/80 ml-4 mb-2 list-disc"
-              dangerouslySetInnerHTML={{ __html: processedLine.slice(2) }}
-            />
-          );
-        }
-        
-        // Empty lines
-        if (line.trim() === '') {
-          return <br key={index} />;
-        }
-        
-        // Regular paragraphs
-        return (
-          <p 
-            key={index} 
-            className="text-white/80 mb-4 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: processedLine }}
-          />
-        );
-      });
+  // Custom markdown components for styling
+  const markdownComponents = {
+    h1: ({ children }: { children?: React.ReactNode }) => (
+      <h1 className="text-3xl font-bold text-white mt-12 mb-6">{children}</h1>
+    ),
+    h2: ({ children }: { children?: React.ReactNode }) => (
+      <h2 className="text-2xl font-bold text-white mt-10 mb-4">{children}</h2>
+    ),
+    h3: ({ children }: { children?: React.ReactNode }) => (
+      <h3 className="text-xl font-semibold text-white mt-8 mb-4">{children}</h3>
+    ),
+    p: ({ children }: { children?: React.ReactNode }) => (
+      <p className="text-white/80 mb-4 leading-relaxed">{children}</p>
+    ),
+    li: ({ children }: { children?: React.ReactNode }) => (
+      <li className="text-white/80 ml-4 mb-2 list-disc">{children}</li>
+    ),
+    ul: ({ children }: { children?: React.ReactNode }) => (
+      <ul className="mb-4">{children}</ul>
+    ),
+    ol: ({ children }: { children?: React.ReactNode }) => (
+      <ol className="mb-4 list-decimal ml-4">{children}</ol>
+    ),
+    strong: ({ children }: { children?: React.ReactNode }) => (
+      <strong className="text-white font-semibold">{children}</strong>
+    ),
+    em: ({ children }: { children?: React.ReactNode }) => (
+      <em>{children}</em>
+    ),
+    code: ({ children }: { children?: React.ReactNode }) => (
+      <code className="bg-automato-gold/20 text-automato-gold px-1.5 py-0.5 rounded text-sm">{children}</code>
+    ),
+    pre: ({ children }: { children?: React.ReactNode }) => (
+      <pre className="bg-white/5 p-4 rounded-lg overflow-x-auto mb-4">{children}</pre>
+    ),
+    a: ({ href, children }: { href?: string; children?: React.ReactNode }) => (
+      <a href={href} className="text-automato-gold hover:underline" target="_blank" rel="noopener noreferrer">{children}</a>
+    ),
+    blockquote: ({ children }: { children?: React.ReactNode }) => (
+      <blockquote className="border-l-4 border-automato-gold pl-4 italic text-white/70 my-4">{children}</blockquote>
+    ),
   };
 
   if (isLoading) {
@@ -210,9 +205,11 @@ const BlogPost = () => {
               </div>
             )}
 
-            {/* Content */}
+            {/* Content - Using ReactMarkdown for safe rendering */}
             <div className="prose prose-invert max-w-none mb-12">
-              {renderMarkdown(post.content)}
+              <ReactMarkdown components={markdownComponents}>
+                {post.content}
+              </ReactMarkdown>
             </div>
 
             {/* Tags */}
