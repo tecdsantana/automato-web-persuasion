@@ -1,7 +1,25 @@
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Logo from './Logo';
 import { Linkedin } from 'lucide-react';
+
 const Footer = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    
+    if (location.pathname === '/') {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate(`/#${sectionId}`);
+    }
+  };
+
   return <footer className="bg-futuristic-gradient text-white py-16">
       <div className="container mx-auto container-padding">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -35,10 +53,10 @@ const Footer = () => {
             <h4 className="text-lg font-normal text-automato-gold mb-4 tracking-wider">SOLUÇÕES</h4>
             <div className="gold-line mb-6 w-16"></div>
             <ul className="space-y-3">
-              <li><a href="#como-funciona" className="text-white/60 hover:text-automato-gold transition-colors">Como Funciona</a></li>
-              <li><a href="#beneficios" className="text-white/60 hover:text-automato-gold transition-colors">Benefícios</a></li>
-              <li><a href="#depoimentos" className="text-white/60 hover:text-automato-gold transition-colors">Depoimentos</a></li>
-              <li><a href="#solucoes" className="text-white/60 hover:text-automato-gold transition-colors">Soluções</a></li>
+              <li><a href="#como-funciona" onClick={(e) => handleNavClick(e, 'como-funciona')} className="text-white/60 hover:text-automato-gold transition-colors">Como Funciona</a></li>
+              <li><a href="#beneficios" onClick={(e) => handleNavClick(e, 'beneficios')} className="text-white/60 hover:text-automato-gold transition-colors">Benefícios</a></li>
+              <li><a href="#depoimentos" onClick={(e) => handleNavClick(e, 'depoimentos')} className="text-white/60 hover:text-automato-gold transition-colors">Depoimentos</a></li>
+              <li><a href="#solucoes" onClick={(e) => handleNavClick(e, 'solucoes')} className="text-white/60 hover:text-automato-gold transition-colors">Soluções</a></li>
             </ul>
           </div>
           
@@ -46,11 +64,11 @@ const Footer = () => {
             <h4 className="text-lg font-normal text-automato-gold mb-4 tracking-wider">EMPRESA</h4>
             <div className="gold-line mb-6 w-16"></div>
             <ul className="space-y-3">
-              <li><a href="#sobre" className="text-white/60 hover:text-automato-gold transition-colors">Sobre Nós</a></li>
-              <li><a href="#cases" className="text-white/60 hover:text-automato-gold transition-colors">Cases de Sucesso</a></li>
+              <li><a href="#sobre" onClick={(e) => handleNavClick(e, 'sobre')} className="text-white/60 hover:text-automato-gold transition-colors">Sobre Nós</a></li>
+              <li><a href="#cases" onClick={(e) => handleNavClick(e, 'cases')} className="text-white/60 hover:text-automato-gold transition-colors">Cases de Sucesso</a></li>
               <li><a href="/blog" className="text-white/60 hover:text-automato-gold transition-colors">Blog</a></li>
-              <li><a href="#carreiras" className="text-white/60 hover:text-automato-gold transition-colors">Carreiras</a></li>
-              <li><a href="#contato" className="text-white/60 hover:text-automato-gold transition-colors">Contato</a></li>
+              <li><a href="#carreiras" onClick={(e) => handleNavClick(e, 'carreiras')} className="text-white/60 hover:text-automato-gold transition-colors">Carreiras</a></li>
+              <li><a href="#contato" onClick={(e) => handleNavClick(e, 'contato')} className="text-white/60 hover:text-automato-gold transition-colors">Contato</a></li>
             </ul>
           </div>
           
@@ -84,9 +102,9 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} FlowNine. Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#privacidade" className="text-white/40 hover:text-automato-gold text-sm transition-colors">Política de Privacidade</a>
-            <a href="#termos" className="text-white/40 hover:text-automato-gold text-sm transition-colors">Termos de Uso</a>
-            <a href="#cookies" className="text-white/40 hover:text-automato-gold text-sm transition-colors">Cookies</a>
+            <a href="#privacidade" onClick={(e) => handleNavClick(e, 'privacidade')} className="text-white/40 hover:text-automato-gold text-sm transition-colors">Política de Privacidade</a>
+            <a href="#termos" onClick={(e) => handleNavClick(e, 'termos')} className="text-white/40 hover:text-automato-gold text-sm transition-colors">Termos de Uso</a>
+            <a href="#cookies" onClick={(e) => handleNavClick(e, 'cookies')} className="text-white/40 hover:text-automato-gold text-sm transition-colors">Cookies</a>
           </div>
         </div>
       </div>

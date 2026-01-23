@@ -1,10 +1,12 @@
-
 import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import Logo from './Logo';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -20,19 +22,29 @@ const Navbar = () => {
     };
   }, [scrolled]);
 
-  const scrollToContact = (e: React.MouseEvent) => {
+  const handleNavClick = (e: React.MouseEvent, sectionId: string) => {
     e.preventDefault();
-    const contactSection = document.getElementById('contato');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+    
+    if (location.pathname === '/') {
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate(`/#${sectionId}`);
     }
   };
 
   const scrollToCalendarMeeting = (e: React.MouseEvent) => {
     e.preventDefault();
-    const contactSection = document.getElementById('calendar-meeting');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+    
+    if (location.pathname === '/') {
+      const contactSection = document.getElementById('calendar-meeting');
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      navigate('/#calendar-meeting');
     }
   };
   
@@ -48,12 +60,12 @@ const Navbar = () => {
         </div>
         
         <nav className="hidden md:flex space-x-10">
-          <a href="#como-funciona" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">COMO FUNCIONA</a>
-          <a href="#beneficios" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">BENEFÍCIOS</a>
-          <a href="#solucoes" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">SOLUÇÕES</a>
-          <a href="#depoimentos" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">DEPOIMENTOS</a>
+          <a href="#como-funciona" onClick={(e) => handleNavClick(e, 'como-funciona')} className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">COMO FUNCIONA</a>
+          <a href="#beneficios" onClick={(e) => handleNavClick(e, 'beneficios')} className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">BENEFÍCIOS</a>
+          <a href="#solucoes" onClick={(e) => handleNavClick(e, 'solucoes')} className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">SOLUÇÕES</a>
+          <a href="#depoimentos" onClick={(e) => handleNavClick(e, 'depoimentos')} className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">DEPOIMENTOS</a>
           <a href="/blog" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">BLOG</a>
-          <a href="#contato" className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">CONTATO</a>
+          <a href="#contato" onClick={(e) => handleNavClick(e, 'contato')} className="text-white/80 hover:text-automato-gold transition-colors text-sm tracking-wider">CONTATO</a>
         </nav>
         
         <div>
