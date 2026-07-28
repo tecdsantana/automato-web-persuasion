@@ -55,9 +55,12 @@ const HeroSection = () => {
                 AGENDAR DIAGNÓSTICO
                 <ArrowRight className="ml-1 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border border-automato-gold/70 text-automato-gold bg-transparent hover:bg-automato-gold/10 hover:gold-glow transition-all text-base tracking-wide" onClick={scrollToSolutions}>
-                CONHECER SOLUÇÕES
-              </Button>
+              {/* Oculto a pedido do cliente; manter o código para reativar facilmente no futuro */}
+              {false && (
+                <Button size="lg" variant="outline" className="border border-automato-gold/70 text-automato-gold bg-transparent hover:bg-automato-gold/10 hover:gold-glow transition-all text-base tracking-wide" onClick={scrollToSolutions}>
+                  CONHECER SOLUÇÕES
+                </Button>
+              )}
             </div>
             <TechStackMarquee />
           </div>

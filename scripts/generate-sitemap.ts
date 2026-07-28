@@ -4,7 +4,7 @@ import { writeFileSync } from "fs";
 import { resolve } from "path";
 import { createClient } from "@supabase/supabase-js";
 
-const BASE_URL = "https://flownine.lovable.app";
+const BASE_URL = "https://flownine.com.br";
 
 const SUPABASE_URL = "https://vsbbuvvouvnyibengsni.supabase.co";
 const SUPABASE_ANON_KEY =
