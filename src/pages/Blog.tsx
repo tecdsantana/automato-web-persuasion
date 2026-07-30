@@ -67,9 +67,9 @@ const Blog = () => {
         <meta property="og:title" content="Blog Flownine — IA, automação e transformação digital" />
         <meta property="og:description" content="Insights sobre IA, automação e inovação para transformar seu negócio." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://flownine.com.br/blog" />
-        <link rel="canonical" href="https://flownine.com.br/blog" />
-        <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"CollectionPage","name":"Blog Flownine","url":"https://flownine.com.br/blog","description":"Artigos sobre IA, automação e transformação digital."}`}</script>
+        <meta property="og:url" content="https://www.flownine.com.br/blog" />
+        <link rel="canonical" href="https://www.flownine.com.br/blog" />
+        <script type="application/ld+json">{`{"@context":"https://schema.org","@type":"CollectionPage","name":"Blog Flownine","url":"https://www.flownine.com.br/blog","description":"Artigos sobre IA, automação e transformação digital."}`}</script>
       </Helmet>
       
       <div className="min-h-screen flex flex-col bg-automato-black">

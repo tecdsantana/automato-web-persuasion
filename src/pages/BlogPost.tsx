@@ -151,8 +151,8 @@ const BlogPost = () => {
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content={`https://flownine.com.br/blog/${post.slug}`} />
-        <link rel="canonical" href={`https://flownine.com.br/blog/${post.slug}`} />
+        <meta property="og:url" content={`https://www.flownine.com.br/blog/${post.slug}`} />
+        <link rel="canonical" href={`https://www.flownine.com.br/blog/${post.slug}`} />
         {post.cover_image && <meta property="og:image" content={post.cover_image} />}
         <script type="application/ld+json">{JSON.stringify({
           "@context": "https://schema.org",
@@ -164,7 +164,7 @@ const BlogPost = () => {
           dateModified: post.updated_at || post.published_at || undefined,
           author: { "@type": "Organization", name: "FlowNine" },
           publisher: { "@type": "Organization", name: "FlowNine" },
-          mainEntityOfPage: `https://flownine.com.br/blog/${post.slug}`,
+          mainEntityOfPage: `https://www.flownine.com.br/blog/${post.slug}`,
           articleSection: post.category,
         })}</script>
       </Helmet>

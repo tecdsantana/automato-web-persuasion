@@ -27,8 +27,8 @@ const QuemSomos = () => {
         <meta property="og:title" content="Quem Somos | FlowNine" />
         <meta property="og:description" content="Conheça a história da FlowNine: mais de uma década de experiência em dados, analytics e IA aplicada a negócio." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://flownine.com.br/quem-somos" />
-        <link rel="canonical" href="https://flownine.com.br/quem-somos" />
+        <meta property="og:url" content="https://www.flownine.com.br/quem-somos" />
+        <link rel="canonical" href="https://www.flownine.com.br/quem-somos" />
       </Helmet>
 
       <div className="min-h-screen flex flex-col bg-automato-black">

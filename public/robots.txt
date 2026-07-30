@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://flownine.com.br/sitemap.xml
+Sitemap: https://www.flownine.com.br/sitemap.xml
