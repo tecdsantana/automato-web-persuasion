@@ -30,6 +30,10 @@
               "value": "technology"
             },
             {
+              "name": "q",
+              "value": "inteligência artificial OR dados OR analytics OR RH OR governança"
+            },
+            {
               "name": "language",
               "value": "pt"
             },
@@ -51,7 +55,7 @@
       "typeVersion": 4.2,
       "position": [450, 300],
       "notesInFlow": true,
-      "notes": "Configure sua API key do NewsAPI ou substitua por outra fonte de dados"
+      "notes": "Configure sua API key do NewsAPI ou substitua por outra fonte de dados. O parâmetro 'q' foca a busca em temas relevantes para FlowNine (dados, IA, RH, governança) em vez de tecnologia genérica."
     },
     {
       "parameters": {
@@ -60,7 +64,7 @@
         "messages": {
           "values": [
             {
-              "content": "Você é um redator especializado em tecnologia e inteligência artificial. Crie um artigo de blog completo em português brasileiro baseado nas notícias fornecidas.\n\nRetorne um JSON válido com exatamente esta estrutura:\n{\n  \"title\": \"Título atrativo do artigo (máx 60 caracteres)\",\n  \"excerpt\": \"Resumo do artigo em 1-2 frases (máx 160 caracteres)\",\n  \"content\": \"Conteúdo completo em Markdown com # para títulos, ## para subtítulos, - para listas, **negrito**, etc.\",\n  \"category\": \"IA\",\n  \"tags\": [\"tag1\", \"tag2\", \"tag3\"],\n  \"cover_image\": \"URL de imagem do Unsplash relacionada ao tema\"\n}\n\nNotícias para basear o artigo:\n{{ $json.articles }}"
+              "content": "Você é o redator do blog da FlowNine, uma consultoria de Dados, IA e People Analytics para empresas. Seu objetivo não é fazer clipping de notícia — é usar a notícia como gancho para um artigo que ranqueie no Google para buscas comerciais reais sobre consultoria de dados, people analytics, governança de dados e BI.\n\nAntes de escrever, escolha UM tema-alvo da lista abaixo — o que fizer mais sentido com a notícia fornecida (a conexão pode ser indireta, não precisa ser óbvia):\n\n- quanto custa uma consultoria de dados\n- vale a pena contratar consultoria de dados e IA\n- como escolher uma consultoria de dados\n- contratar people analytics: o que avaliar\n- o que faz uma consultoria de people analytics\n- como implementar governança de dados\n- por onde começar a estruturar dados na empresa\n- terceirizar analytics vale a pena\n- como montar um time de dados\n- quanto custa implementar BI corporativo\n- ROI de people analytics: como medir\n- como montar um dashboard de RH\n- diferença entre BI e IA aplicada a negócio\n- como auditar a maturidade de dados de uma empresa\n- consultoria de dados para RH: como funciona\n\nEstrutura do artigo:\n1. Abra com um parágrafo curto conectando a notícia ao tema-alvo escolhido — a notícia é o gancho, não o assunto principal.\n2. Desenvolva o tema-alvo com profundidade prática: o que uma empresa real deveria considerar, sinais de alerta, passos concretos. Não repita a notícia — traga a perspectiva de quem já implementou isso.\n3. Feche com 1-2 frases conectando o tema à forma como a FlowNine atua (contexto, não propaganda ostensiva).\n\nRegras de formatação (importantes para SEO):\n- \"title\": até 60 caracteres, natural, sem clickbait, incorporando o tema-alvo escolhido ou uma variação próxima.\n- \"excerpt\": entre 140 e 160 caracteres, resumindo o valor real do artigo — isso vira a meta description no Google, não pode ser vago ou genérico.\n- \"content\": em Markdown. NÃO comece com um heading (#) repetindo o título — comece direto com um parágrafo. Use ## para as seções internas. Parafraseie a notícia-fonte, não a cite longamente.\n- \"category\": escolha exatamente uma entre \"Governança de Dados\", \"BI & Analytics\", \"People Analytics\", \"IA Aplicada a Negócios\".\n- \"tags\": 3 a 5 tags, incluindo obrigatoriamente o tema-alvo escolhido (ou uma variação curta dele) como uma das tags.\n- \"cover_image\": URL de imagem do Unsplash relacionada ao tema.\n\nRetorne um JSON válido com exatamente esta estrutura:\n{\n  \"title\": \"...\",\n  \"excerpt\": \"...\",\n  \"content\": \"...\",\n  \"category\": \"...\",\n  \"tags\": [\"...\", \"...\", \"...\"],\n  \"cover_image\": \"...\"\n}\n\nNotícias para se inspirar (use como gancho, não como assunto principal):\n{{ $json.articles }}"
             }
           ]
         },
@@ -85,7 +89,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://gjgfevzzonppzxftaxgh.supabase.co/functions/v1/create-blog-post",
+        "url": "https://vsbbuvvouvnyibengsni.supabase.co/functions/v1/create-blog-post",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -95,13 +99,13 @@
             },
             {
               "name": "Authorization",
-              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdqZ2Zldnp6b25wcHp4ZnRheGdoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg5NjMyMzIsImV4cCI6MjA4NDUzOTIzMn0.2mkQizGIpuEY6BWVE7crpXf9Zz6k5t2GqFKmzD3LHF0"
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZzYmJ1dnZvdXZueWliZW5nc25pIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg0MzY0MTIsImV4cCI6MjA1NDAxMjQxMn0.Bgu9EXnPYjG34Jg9LhI1kHAis50o-64oqyjL1je-9Hg"
             }
           ]
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"title\": {{ $json.message.content.title }},\n  \"excerpt\": {{ $json.message.content.excerpt }},\n  \"content\": {{ $json.message.content.content }},\n  \"category\": {{ $json.message.content.category || \"IA\" }},\n  \"tags\": {{ $json.message.content.tags || [] }},\n  \"cover_image\": {{ $json.message.content.cover_image || null }},\n  \"published\": true\n}",
+        "jsonBody": "={\n  \"title\": {{ $json.message.content.title }},\n  \"excerpt\": {{ $json.message.content.excerpt }},\n  \"content\": {{ $json.message.content.content }},\n  \"category\": {{ $json.message.content.category || \"IA Aplicada a Negócios\" }},\n  \"tags\": {{ $json.message.content.tags || [] }},\n  \"cover_image\": {{ $json.message.content.cover_image || null }},\n  \"published\": true,\n  \"webhook_secret\": \"={{$credentials.blogWebhookSecret}}\"\n}",
         "options": {}
       },
       "id": "create-blog-post",
@@ -110,7 +114,7 @@
       "typeVersion": 4.2,
       "position": [850, 300],
       "notesInFlow": true,
-      "notes": "Envia o artigo gerado para a Edge Function do Supabase"
+      "notes": "Envia o artigo gerado para a Edge Function do Supabase. Projeto atual: vsbbuvvouvnyibengsni. webhook_secret precisa bater com BLOG_WEBHOOK_SECRET configurado na Edge Function."
     }
   ],
   "connections": {
