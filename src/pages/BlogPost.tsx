@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Calendar, Clock, ArrowLeft, Share2, Linkedin, Twitter } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -74,16 +74,18 @@ const BlogPost = () => {
     }
   };
 
-  // Custom markdown components for styling
+  // Custom markdown components for styling.
+  // post.title above is already the page's <h1>, so markdown headings are shifted
+  // down one level (# -> h2, ## -> h3, ### -> h4) to avoid a duplicate <h1>.
   const markdownComponents = {
     h1: ({ children }: { children?: React.ReactNode }) => (
-      <h1 className="text-3xl font-bold text-white mt-12 mb-6">{children}</h1>
-    ),
-    h2: ({ children }: { children?: React.ReactNode }) => (
       <h2 className="text-2xl font-bold text-white mt-10 mb-4">{children}</h2>
     ),
-    h3: ({ children }: { children?: React.ReactNode }) => (
+    h2: ({ children }: { children?: React.ReactNode }) => (
       <h3 className="text-xl font-semibold text-white mt-8 mb-4">{children}</h3>
+    ),
+    h3: ({ children }: { children?: React.ReactNode }) => (
+      <h4 className="text-lg font-semibold text-white mt-6 mb-3">{children}</h4>
     ),
     p: ({ children }: { children?: React.ReactNode }) => (
       <p className="text-white/80 mb-4 leading-relaxed">{children}</p>

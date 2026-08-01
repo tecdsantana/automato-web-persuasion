@@ -5,25 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlowNine | Consultoria de Dados, IA e People Analytics</title>
-    <meta name="description" content="Consultoria de Dados, IA e People Analytics para empresas. Da arquitetura à operação, ajudamos a transformar dados em velocidade, eficiência e resultado." />
-    <meta name="keywords" content="consultoria de dados, inteligência artificial, people analytics, business analytics, governança de dados, BI, transformação digital, FlowNine" />
     <meta name="author" content="FlowNine" />
     <meta name="robots" content="index, follow" />
     <meta name="google-site-verification" content="sPPK9i4rGyuwLlxiHajhXb6sRzQiPr1kexwxi0SE2y0" />
     <meta name="google-site-verification" content="GYDvTqIzuDZzYZ_BNFMNgZtLwfQyiLaoT7uuKBmpWRE" />
 
-    <!-- Open Graph / Facebook (sitewide fallback; per-route Helmet overrides for JS crawlers) -->
+    <!--
+      description, keywords, og:title, og:description, og:url e twitter:title/description
+      NÃO ficam aqui: toda rota já define os seus via <Helmet> (src/pages/*.tsx), e como o
+      Helmet só substitui as tags que ele próprio injeta, uma versão estática duplicada aqui
+      ficaria "por baixo" da correta em vez de ser substituída. Twitter cai de volta para
+      og:title/og:description quando twitter:title/description faltam, então não precisa
+      duplicar. og:type/locale/site_name ficam por serem constantes em todas as rotas.
+    -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.flownine.com.br" />
-    <meta property="og:title" content="FlowNine | Consultoria de Dados, IA e People Analytics" />
-    <meta property="og:description" content="Consultoria de Dados, IA e People Analytics para empresas. Da arquitetura à operação, ajudamos a transformar dados em velocidade, eficiência e resultado." />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="FlowNine" />
-
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content="FlowNine | Consultoria de Dados, IA e People Analytics" />
-    <meta property="twitter:description" content="Consultoria de Dados, IA e People Analytics para empresas. Da arquitetura à operação, ajudamos a transformar dados em velocidade, eficiência e resultado." />
     <meta name="twitter:site" content="@flownine" />
 
     <!-- Organization & WebSite structured data -->

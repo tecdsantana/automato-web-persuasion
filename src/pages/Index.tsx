@@ -11,7 +11,7 @@ import ComparisonTable from '@/components/ComparisonTable';
 import ContactForm from '@/components/ContactForm';
 import BtnWhatsappFloat from '@/components/BtnWhatsappFloat';
 import Footer from '@/components/Footer';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 const Index = () => {
   const location = useLocation();
