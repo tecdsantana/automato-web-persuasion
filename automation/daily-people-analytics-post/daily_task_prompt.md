@@ -2,7 +2,7 @@
 
 Você vai gerar e publicar automaticamente 1 post no blog da flownine (tabela `blog_posts` no Supabase), seguindo estes passos. Esta rotina roda **2x ao dia** — cada execução deve ser tratada como independente e precisa gerar um post com ângulo/assunto **diferente** da execução anterior (ver seção "Evitar duplicação" abaixo).
 
-Este prompt roda em um agente na nuvem, num checkout deste repositório (`tecdsantana/flownine`). As credenciais (Supabase, Unsplash) vêm de variáveis de ambiente do próprio agente/rotina — não de um arquivo `.env` local. Se alguma variável obrigatória estiver ausente, o passo relacionado deve ser pulado (ver seção 3) ou a execução deve parar com um erro claro (ver seção 4).
+Este prompt roda em um agente na nuvem, num checkout deste repositório (`tecdsantana/flownine`). As credenciais (Supabase, Unsplash) vêm de variáveis de ambiente do próprio agente/rotina — não de um arquivo `.env` local. Se alguma variável obrigatória estiver ausente, o passo relacionado deve ser pulado (ver seção 4) ou a execução deve parar com um erro claro (ver seção 5).
 
 ## 1. Buscar conteúdo
 
@@ -21,7 +21,34 @@ Priorize fontes relevantes e de autoridade (HBR, McKinsey, Gartner, MIT Sloan, L
 
 Só pule a execução (ver seção "Observações") se mesmo essa busca ampliada não retornar nada relevante e recente.
 
-## 2. Escrever o post — regras de SEO e originalidade
+## 2. Escolher o ângulo de busca comercial
+
+Além da notícia em si, cada post precisa mirar UMA pergunta de busca comercial real — a notícia é o gancho, mas o artigo deve responder a uma dúvida que alguém pesquisaria no Google antes de contratar uma consultoria como a FlowNine. Escolha um tema da lista abaixo que faça sentido com a notícia encontrada (a conexão pode ser indireta):
+
+- quanto custa uma consultoria de dados
+- vale a pena contratar consultoria de dados e IA
+- como escolher uma consultoria de dados
+- contratar people analytics: o que avaliar
+- o que faz uma consultoria de people analytics
+- como implementar governança de dados
+- por onde começar a estruturar dados na empresa
+- terceirizar analytics vale a pena
+- como montar um time de dados
+- quanto custa implementar BI corporativo
+- ROI de people analytics: como medir
+- como montar um dashboard de RH
+- diferença entre BI e IA aplicada a negócio
+- como auditar a maturidade de dados de uma empresa
+- consultoria de dados para RH: como funciona
+
+Antes de escolher, confira os `tags` dos últimos posts (seção "Evitar duplicação") e evite repetir o mesmo tema-alvo usado nas últimas 3–4 execuções — percorra toda a lista antes de repetir um item.
+
+Como aplicar o tema-alvo, sem virar propaganda:
+- Inclua o tema-alvo (ou uma variação natural dele) como uma das `tags`.
+- Dedique pelo menos uma seção do `content` a responder essa pergunta na prática — conteúdo real de valor, não um CTA disfarçado (ex.: se o tema for "quanto custa uma consultoria de dados", explique os fatores reais que influenciam o preço, sem inventar números da FlowNine).
+- Incorpore o tema-alvo ao `title` quando ficar natural; quando não couber bem, é aceitável que ele apareça só na seção dedicada e nas tags — não force um título artificial.
+
+## 3. Escrever o post — regras de SEO e originalidade
 
 O objetivo é conteúdo que o Google trate como **útil e original** (critério real de ranqueamento — E-E-A-T: Experience, Expertise, Authoritativeness, Trustworthiness), não um texto genérico que pareça produzido em massa. Isso protege o site tanto de penalização por "conteúdo raso" quanto de parecer copy robotizado para quem lê. Regras:
 
@@ -40,7 +67,7 @@ O objetivo é conteúdo que o Google trate como **útil e original** (critério 
 - **published:** `true` (publicação direta, sem revisão humana — decisão já validada com o usuário).
 - **Idioma:** português do Brasil.
 
-## 3. Buscar imagem de capa (Unsplash)
+## 4. Buscar imagem de capa (Unsplash)
 
 A chave da API Unsplash vem da variável de ambiente `UNSPLASH_ACCESS_KEY`. **Se essa variável estiver vazia/ausente, pule esta seção inteira e publique com `cover_image: null`** — não tente adivinhar ou usar outra URL de imagem. Use a API oficial (não faça scraping do site):
 
@@ -57,7 +84,7 @@ curl -s "https://api.unsplash.com/search/photos?query=<TERMO_EM_INGLES>&orientat
 - Se a busca em inglês não retornar nada relevante, tente um termo mais genérico (ex: "office team", "business data") antes de desistir da imagem.
 - Se mesmo assim não achar nada adequado, publique com `cover_image: null` em vez de usar uma imagem sem relação com o assunto.
 
-## 4. Publicar
+## 5. Publicar
 1. Salve o JSON do post em um arquivo temporário no workspace do agente, com as chaves: `title`, `excerpt`, `content`, `category`, `tags`, `cover_image` (URL do Unsplash ou `null`).
 2. Rode, a partir da raiz do repositório:
    ```
@@ -67,13 +94,13 @@ curl -s "https://api.unsplash.com/search/photos?query=<TERMO_EM_INGLES>&orientat
    (sem `--draft`, para publicar direto — `published` já vem `true` do JSON). As credenciais Supabase devem estar disponíveis como variáveis de ambiente (`SUPABASE_URL`, `SUPABASE_TABLE`, `SUPABASE_SERVICE_ROLE_KEY`); se alguma estiver ausente, o script falha com uma mensagem clara — não tente adivinhar valores nem prosseguir sem publicar.
 3. Confirme que o script retornou o post inserido (JSON de resposta com `id` preenchido).
 
-## 5. Reportar
-Ao final, envie uma mensagem curta confirmando: título do post publicado, categoria, fonte usada, e se conseguiu incluir imagem de capa (e de onde).
+## 6. Reportar
+Ao final, envie uma mensagem curta confirmando: título do post publicado, categoria, tema-alvo de busca comercial escolhido (seção 2), fonte usada, e se conseguiu incluir imagem de capa (e de onde).
 
 ## Evitar duplicação (importante para SEO — conteúdo duplicado/repetitivo é penalizado)
-Antes de escrever, consulte os últimos posts publicados para não repetir tema, ângulo, título ou imagem:
+Antes de escrever, consulte os últimos posts publicados para não repetir tema, ângulo, tema-alvo de busca, título ou imagem:
 ```
-GET https://vsbbuvvouvnyibengsni.supabase.co/rest/v1/blog_posts?select=title,category,cover_image,published_at&order=published_at.desc&limit=10
+GET https://vsbbuvvouvnyibengsni.supabase.co/rest/v1/blog_posts?select=title,category,tags,cover_image,published_at&order=published_at.desc&limit=10
 Header: apikey: <SUPABASE_ANON_KEY ou SUPABASE_SERVICE_ROLE_KEY>
 ```
 Se a execução atual for a segunda do mesmo dia, garanta que o assunto e o ângulo sejam claramente diferentes do post já publicado horas antes (ex: uma execução sobre People Analytics/RH, outra sobre estratégia/governança de dados).
