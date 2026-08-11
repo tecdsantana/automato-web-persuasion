@@ -120,3 +120,26 @@
     transform: translateX(-50%);
   }
 }
+
+/*
+  O formulário de contato (#contato) é injetado em runtime pelo Klaviyo
+  (klaviyo-form-SpJXJg), então seu HTML/CSS não existe neste repositório —
+  o dropdown de país do telefone (biblioteca "downshift" por baixo) vem com
+  fundo branco por padrão. Sobrescrevendo aqui para acompanhar o tema escuro
+  do site; o ajuste definitivo (cores, fonte) deve ser feito no editor de
+  formulário do Klaviyo, que sobrevive a mudanças na estrutura do widget.
+*/
+.klaviyo-form-SpJXJg [role="listbox"] {
+  background-color: #0a120d !important;
+  border-color: rgba(57, 255, 136, 0.3) !important;
+}
+
+.klaviyo-form-SpJXJg [role="option"] {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+.klaviyo-form-SpJXJg [role="option"]:hover,
+.klaviyo-form-SpJXJg [role="option"][aria-selected="true"] {
+  background-color: rgba(57, 255, 136, 0.12) !important;
+}
