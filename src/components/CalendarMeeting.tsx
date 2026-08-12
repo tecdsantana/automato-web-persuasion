@@ -11,6 +11,20 @@ const CalendarMeeting = () => {
         hideEventTypeDetails: false,
         layout: "month_view",
       });
+
+      // Conversão do Google Ads: dispara quando o agendamento é concluído com sucesso
+      cal("on", {
+        action: "bookingSuccessfulV2",
+        callback: () => {
+          if (typeof window.gtag === "function") {
+            window.gtag("event", "conversion", {
+              send_to: "AW-17892029808/b3iuCLLahuobEPDqytNC",
+              value: 1.0,
+              currency: "BRL",
+            });
+          }
+        },
+      });
     })();
   }, []);
 
