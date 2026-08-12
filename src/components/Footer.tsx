@@ -96,9 +96,9 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} FlowNine. Todos os direitos reservados.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#privacidade" onClick={(e) => handleNavClick(e, 'privacidade')} className="text-white/40 hover:text-automato-gold text-sm transition-colors">Política de Privacidade</a>
-            <a href="#termos" onClick={(e) => handleNavClick(e, 'termos')} className="text-white/40 hover:text-automato-gold text-sm transition-colors">Termos de Uso</a>
-            <a href="#cookies" onClick={(e) => handleNavClick(e, 'cookies')} className="text-white/40 hover:text-automato-gold text-sm transition-colors">Cookies</a>
+            <Link to="/politica-de-privacidade" className="text-white/40 hover:text-automato-gold text-sm transition-colors">Política de Privacidade</Link>
+            <Link to="/termos-de-uso" className="text-white/40 hover:text-automato-gold text-sm transition-colors">Termos de Uso</Link>
+            <Link to="/politica-de-privacidade#cookies" className="text-white/40 hover:text-automato-gold text-sm transition-colors">Cookies</Link>
           </div>
         </div>
       </div>
