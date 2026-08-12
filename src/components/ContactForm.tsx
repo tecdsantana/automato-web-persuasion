@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -126,7 +127,11 @@ const ContactForm = () => {
               <div className="klaviyo-form-SpJXJg"></div>
 
               <p className="text-xs text-white/50 mt-4 text-center">
-                Ao enviar este formulário, você concorda com nossa política de privacidade.
+                Ao enviar este formulário, você concorda com nossa{' '}
+                <Link to="/politica-de-privacidade" className="underline hover:text-automato-gold">
+                  política de privacidade
+                </Link>
+                .
               </p>
             </div>
           </div>
